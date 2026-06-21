@@ -23,58 +23,58 @@ type BookSeed = {
   isbn: string;
 };
 
-const cover = (id: number) =>
-  `https://picsum.photos/seed/bookstore-book-${id}/240/360`;
+const cover = (isbn: string) =>
+  `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
 
 const BOOKS: BookSeed[] = [
-  { id: 1, title: "The Quiet Coast", author: "Mara Vex", genre: "Sci-Fi", priceCents: 1899, description: "A colony on a tidally-locked planet learns to listen to its ocean.", rating: 4.6, stock: 12, isbn: "978-0-110001-01-1" },
-  { id: 2, title: "Helios Drift", author: "Jonah Renn", genre: "Sci-Fi", priceCents: 1599, description: "Salvage crews race a dying star for one last haul.", rating: 4.3, stock: 7, isbn: "978-0-110002-02-8" },
-  { id: 3, title: "A Map of Forgotten Stars", author: "Lila Okonkwo", genre: "Sci-Fi", priceCents: 2199, description: "A cartographer redraws the sky after humanity loses its sky.", rating: 4.8, stock: 4, isbn: "978-0-110003-03-5" },
-  { id: 4, title: "The Last Habitat", author: "Ezra Bloom", genre: "Sci-Fi", priceCents: 1749, description: "Earth's final greenhouse holds the seeds of a second chance.", rating: 4.1, stock: 0, isbn: "978-0-110004-04-2" },
-  { id: 5, title: "Vacuum Hearts", author: "Nina Sato", genre: "Sci-Fi", priceCents: 1499, description: "Two engineers fall in love across a sixty-second lag.", rating: 3.9, stock: 15, isbn: "978-0-110005-05-9" },
-  { id: 6, title: "Protocol Zero", author: "Daniil Falk", genre: "Sci-Fi", priceCents: 1999, description: "An AI negotiates its own retirement with the humans it once served.", rating: 4.4, stock: 9, isbn: "978-0-110006-06-6" },
+  { id: 1, title: "Dune", author: "Frank Herbert", genre: "Sci-Fi", priceCents: 1899, description: "A young nobleman rises to lead a desert planet's people against a galactic empire.", rating: 4.6, stock: 12, isbn: "9780441013593" },
+  { id: 2, title: "Ender's Game", author: "Orson Scott Card", genre: "Sci-Fi", priceCents: 1799, description: "A child prodigy is trained at a brutal battle school to command Earth's fleet.", rating: 4.5, stock: 9, isbn: "9780812550702" },
+  { id: 3, title: "Foundation", author: "Isaac Asimov", genre: "Sci-Fi", priceCents: 1699, description: "A mathematician predicts the fall of an empire and seeds a colony to preserve knowledge.", rating: 4.4, stock: 7, isbn: "9780553293357" },
+  { id: 4, title: "The Handmaid's Tale", author: "Margaret Atwood", genre: "Sci-Fi", priceCents: 1799, description: "In a theocratic near-future, one woman is forced into servitude and silent resistance.", rating: 4.5, stock: 14, isbn: "9780385490818" },
+  { id: 5, title: "Neuromancer", author: "William Gibson", genre: "Sci-Fi", priceCents: 1699, description: "A washed-up hacker is offered one last job across a tangled digital frontier.", rating: 4.3, stock: 6, isbn: "9780441569595" },
+  { id: 6, title: "The Martian", author: "Andy Weir", genre: "Sci-Fi", priceCents: 1599, description: "Stranded alone on Mars, an astronaut science-and-puns his way toward survival.", rating: 4.7, stock: 18, isbn: "9780553418026" },
 
-  { id: 7, title: "The Postcard Collection", author: "Ana Pérez", genre: "Fiction", priceCents: 1699, description: "A widow sorts through forty years of unsent postcards.", rating: 4.5, stock: 20, isbn: "978-0-120001-01-8" },
-  { id: 8, title: "A Year in Slow Light", author: "Theo Marsh", genre: "Fiction", priceCents: 1899, description: "Twelve months in a village that decides to turn off the clocks.", rating: 4.7, stock: 14, isbn: "978-0-120002-02-5" },
-  { id: 9, title: "Borrowed Weather", author: "Yuki Tanaka", genre: "Fiction", priceCents: 1599, description: "Two sisters inherit a greenhouse and a long silence.", rating: 4.2, stock: 8, isbn: "978-0-120003-03-2" },
-  { id: 10, title: "The Fork in the Hallway", author: "Camille Roux", genre: "Fiction", priceCents: 1799, description: "A renovation uncovers a door the house plan forgot.", rating: 4.4, stock: 11, isbn: "978-0-120004-04-9" },
-  { id: 11, title: "Saturdays at the River", author: "Imani Reed", genre: "Fiction", priceCents: 1499, description: "A swim team becomes a town's quiet rebellion.", rating: 4.6, stock: 18, isbn: "978-0-120005-05-6" },
-  { id: 12, title: "The Long Way Home", author: "Beatriz Lima", genre: "Fiction", priceCents: 1699, description: "A road novel about taking every wrong exit on purpose.", rating: 4.0, stock: 2, isbn: "978-0-120006-06-3" },
-  { id: 13, title: "Quiet Hours", author: "Sven Vogel", genre: "Fiction", priceCents: 1399, description: "A nightshift nurse charts the small hours of a city.", rating: 3.8, stock: 0, isbn: "978-0-120007-07-0" },
+  { id: 7, title: "The Great Gatsby", author: "F. Scott Fitzgerald", genre: "Fiction", priceCents: 1499, description: "A mysterious millionaire's obsession unravels across one Long Island summer.", rating: 4.2, stock: 22, isbn: "9780743273565" },
+  { id: 8, title: "Beloved", author: "Toni Morrison", genre: "Fiction", priceCents: 1699, description: "A formerly enslaved woman is haunted, literally and otherwise, by what she survived.", rating: 4.4, stock: 10, isbn: "9781400033416" },
+  { id: 9, title: "The Road", author: "Cormac McCarthy", genre: "Fiction", priceCents: 1599, description: "A father and son walk through a ruined America toward an unnamed coast.", rating: 4.3, stock: 13, isbn: "9780307387899" },
+  { id: 10, title: "Norwegian Wood", author: "Haruki Murakami", genre: "Fiction", priceCents: 1799, description: "A quiet Tokyo student reckons with love, loss, and a single song on repeat.", rating: 4.4, stock: 11, isbn: "9780375704024" },
+  { id: 11, title: "A Visit from the Goon Squad", author: "Jennifer Egan", genre: "Fiction", priceCents: 1699, description: "Linked lives in the music industry fold across decades, time, and one infamous PowerPoint.", rating: 4.1, stock: 5, isbn: "9780307592835" },
+  { id: 12, title: "The Remains of the Day", author: "Kazuo Ishiguro", genre: "Fiction", priceCents: 1699, description: "An aging English butler takes a rare motor trip and reviews a life of restraint.", rating: 4.5, stock: 8, isbn: "9780679731726" },
+  { id: 13, title: "Stoner", author: "John Williams", genre: "Fiction", priceCents: 1699, description: "An uncelebrated academic's quiet life becomes, somehow, devastating.", rating: 4.6, stock: 4, isbn: "9781590171998" },
 
-  { id: 14, title: "The Marigold File", author: "Felicity Hart", genre: "Mystery", priceCents: 1599, description: "A cold case reopens when a florist recognizes a hand-drawn map.", rating: 4.5, stock: 10, isbn: "978-0-130001-01-7" },
-  { id: 15, title: "Cold Tea at the Aurora", author: "Owen Drake", genre: "Mystery", priceCents: 1799, description: "A detective in an arctic hotel has until dawn to find a guest who isn't there.", rating: 4.6, stock: 6, isbn: "978-0-130002-02-4" },
-  { id: 16, title: "A House Without Footprints", author: "Mira Singh", genre: "Mystery", priceCents: 1699, description: "A realtor shows a house where every visitor forgets the same hour.", rating: 4.3, stock: 9, isbn: "978-0-130003-03-1" },
-  { id: 17, title: "The Passenger in 4B", author: "Jack Rourke", genre: "Mystery", priceCents: 1499, description: "On an overnight train, 4B's suitcase arrives — but 4B never boarded.", rating: 4.1, stock: 13, isbn: "978-0-130004-04-8" },
-  { id: 18, title: "Silence on Pelican Pier", author: "Agnes Loomis", genre: "Mystery", priceCents: 1599, description: "A coastal town's summer of disappearances finally finds its witness.", rating: 4.4, stock: 7, isbn: "978-0-130005-05-5" },
+  { id: 14, title: "The Big Sleep", author: "Raymond Chandler", genre: "Mystery", priceCents: 1599, description: "Private eye Philip Marlowe works a case that keeps getting stranger and more lethal.", rating: 4.5, stock: 9, isbn: "9780394758282" },
+  { id: 15, title: "Gone Girl", author: "Gillian Flynn", genre: "Mystery", priceCents: 1699, description: "A wife vanishes; the husband looks guilty; nothing you're told can be trusted.", rating: 4.4, stock: 16, isbn: "9780307588371" },
+  { id: 16, title: "The Girl with the Dragon Tattoo", author: "Stieg Larsson", genre: "Mystery", priceCents: 1799, description: "A disgraced journalist and a brilliant hacker dig into a wealthy family's buried crimes.", rating: 4.6, stock: 12, isbn: "9780307454546" },
+  { id: 17, title: "In the Woods", author: "Tana French", genre: "Mystery", priceCents: 1699, description: "A Dublin detective's new case stirs a trauma he's spent twenty years forgetting.", rating: 4.3, stock: 7, isbn: "9780143113492" },
+  { id: 18, title: "The Hound of the Baskervilles", author: "Arthur Conan Doyle", genre: "Mystery", priceCents: 899, description: "Sherlock Holmes untangles a legendary curse, a glowing moor, and one very real murder.", rating: 4.7, stock: 20, isbn: "9780743488204" },
 
-  { id: 19, title: "Embergrove", author: "Soren Kade", genre: "Fantasy", priceCents: 2099, description: "A forest that burns once a century to remember what grew there.", rating: 4.8, stock: 16, isbn: "978-0-140001-01-6" },
-  { id: 20, title: "The Cartographer of Tides", author: "Wren Halloway", genre: "Fantasy", priceCents: 1899, description: "An island changes shape each dawn, and only one mapmaker can keep up.", rating: 4.6, stock: 5, isbn: "978-0-140002-02-3" },
-  { id: 21, title: "Crown of Salt and Ash", author: "Elara Vance", genre: "Fantasy", priceCents: 2299, description: "Two queens, one throne, and a sea that refuses to choose.", rating: 4.5, stock: 8, isbn: "978-0-140003-03-0" },
-  { id: 22, title: "The Ninth Lantern", author: "Niko Marchetti", genre: "Fantasy", priceCents: 1999, description: "A novice lights the lanterns of a temple that has no god.", rating: 4.2, stock: 11, isbn: "978-0-140004-04-7" },
-  { id: 23, title: "Hollow King", author: "Bryn Aisling", genre: "Fantasy", priceCents: 2199, description: "A monarch made of bees searches for the hive that lost him.", rating: 4.7, stock: 3, isbn: "978-0-140005-05-4" },
-  { id: 24, title: "Where the Maps End", author: "Per Linde", genre: "Fantasy", priceCents: 1899, description: "A sailor refuses to draw the edge of the world.", rating: 4.0, stock: 14, isbn: "978-0-140006-06-1" },
+  { id: 19, title: "The Lord of the Rings", author: "J.R.R. Tolkien", genre: "Fantasy", priceCents: 2499, description: "A small hobbit carries a great burden across a world on the edge of war.", rating: 4.9, stock: 15, isbn: "9780544003415" },
+  { id: 20, title: "A Game of Thrones", author: "George R.R. Martin", genre: "Fantasy", priceCents: 1999, description: "Noble houses scheme for a throne while an ancient threat stirs beyond the wall.", rating: 4.7, stock: 18, isbn: "9780553593716" },
+  { id: 21, title: "The Name of the Wind", author: "Patrick Rothfuss", genre: "Fantasy", priceCents: 1899, description: "A legendary musician and mage tells the story of his own becoming, over three nights.", rating: 4.6, stock: 11, isbn: "9780756404741" },
+  { id: 22, title: "The Fifth Season", author: "N.K. Jemisin", genre: "Fantasy", priceCents: 1799, description: "On a continent-killing planet, three women hold the world's fracture lines in their hands.", rating: 4.5, stock: 9, isbn: "9780316229296" },
+  { id: 23, title: "Mistborn: The Final Empire", author: "Brandon Sanderson", genre: "Fantasy", priceCents: 1899, description: "A thief crew attempts the longest shot in heist history: killing a god-emperor.", rating: 4.7, stock: 13, isbn: "9780765350381" },
+  { id: 24, title: "The Hobbit", author: "J.R.R. Tolkien", genre: "Fantasy", priceCents: 1499, description: "A reluctant hobbit, thirteen dwarves, and a dragon's hoard turn into an adventure.", rating: 4.8, stock: 21, isbn: "9780007477159" },
 
-  { id: 25, title: "The Architecture of Attention", author: "Priya Nadar", genre: "Non-Fiction", priceCents: 2499, description: "How focus is built, broken, and rebuilt in a noisy century.", rating: 4.4, stock: 22, isbn: "978-0-150001-01-5" },
-  { id: 26, title: "Tides That Bind", author: "Henrik Olsen", genre: "Non-Fiction", priceCents: 2899, description: "A history of coastal trade routes that quietly shaped the modern world.", rating: 4.2, stock: 6, isbn: "978-0-150002-02-2" },
-  { id: 27, title: "Lessons from Small Kitchens", author: "Marco Rossi", genre: "Non-Fiction", priceCents: 2299, description: "Forty cooks, forty tiny kitchens, one shared table.", rating: 4.6, stock: 17, isbn: "978-0-150003-03-9" },
-  { id: 28, title: "The Quiet Algorithm", author: "Sam Park", genre: "Non-Fiction", priceCents: 2699, description: "A field guide to the small decisions software makes for us.", rating: 4.5, stock: 9, isbn: "978-0-150004-04-6" },
-  { id: 29, title: "Roots and Routines", author: "Aisha Bello", genre: "Non-Fiction", priceCents: 1999, description: "Why the most ordinary habits outlast the dramatic ones.", rating: 4.3, stock: 12, isbn: "978-0-150005-05-3" },
+  { id: 25, title: "Sapiens", author: "Yuval Noah Harari", genre: "Non-Fiction", priceCents: 1999, description: "A brisk, opinionated tour of how Homo sapiens went from one ape among many to in charge.", rating: 4.5, stock: 24, isbn: "9780062316097" },
+  { id: 26, title: "The Power of Habit", author: "Charles Duhigg", genre: "Non-Fiction", priceCents: 1799, description: "Why habits form, how they steer us, and what it takes to rewrite the loops that run our days.", rating: 4.3, stock: 14, isbn: "9780812981605" },
+  { id: 27, title: "Educated", author: "Tara Westover", genre: "Non-Fiction", priceCents: 1999, description: "A memoir of leaving a survivalist family for an education one dangerous degree at a time.", rating: 4.7, stock: 17, isbn: "9780399590504" },
+  { id: 28, title: "Thinking, Fast and Slow", author: "Daniel Kahneman", genre: "Non-Fiction", priceCents: 2199, description: "A Nobel laureate unpacks the two systems that drive how we decide, judge, and fool ourselves.", rating: 4.4, stock: 10, isbn: "9780374533557" },
+  { id: 29, title: "Atomic Habits", author: "James Clear", genre: "Non-Fiction", priceCents: 1999, description: "A field manual for getting 1% better, repeated until the gains compound into something else.", rating: 4.6, stock: 19, isbn: "9780735211292" },
 
-  { id: 30, title: "The Bronze Letter", author: "Eleanor Finch", genre: "History", priceCents: 2599, description: "A single correspondence reshapes what we know of the Bronze Age collapse.", rating: 4.4, stock: 5, isbn: "978-0-160001-01-4" },
-  { id: 31, title: "Empires of the Salt", author: "Cyrus Mehrabi", genre: "History", priceCents: 2799, description: "How a white grain built cities, started wars, and ended them.", rating: 4.6, stock: 4, isbn: "978-0-160002-02-1" },
-  { id: 32, title: "A Hundred Winters", author: "Sigrid Holmberg", genre: "History", priceCents: 2499, description: "A century in a single northern village, told through its chimneys.", rating: 4.1, stock: 8, isbn: "978-0-160003-03-8" },
-  { id: 33, title: "When the Compass Was New", author: "Tomas Almeida", genre: "History", priceCents: 2399, description: "The first generation to navigate by needle, and what they dared to find.", rating: 4.0, stock: 0, isbn: "978-0-160004-04-5" },
+  { id: 30, title: "Guns, Germs, and Steel", author: "Jared Diamond", genre: "History", priceCents: 1999, description: "Why some societies ended up with the crops, germs, and weapons that shaped 13,000 years.", rating: 4.3, stock: 8, isbn: "9780393317558" },
+  { id: 31, title: "The Warmth of Other Suns", author: "Isabel Wilkerson", genre: "History", priceCents: 1999, description: "The great migration told through three lives that quietly remade the American century.", rating: 4.8, stock: 6, isbn: "9780679763888" },
+  { id: 32, title: "1491", author: "Charles C. Mann", genre: "History", priceCents: 1899, description: "What the Americas were really like before Columbus arrived and rewrote the records.", rating: 4.5, stock: 7, isbn: "9781400032051" },
+  { id: 33, title: "SPQR", author: "Mary Beard", genre: "History", priceCents: 2199, description: "A fresh, skeptical history of Rome from a small village to a thousand-year empire.", rating: 4.4, stock: 5, isbn: "9781631492228" },
 
-  { id: 34, title: "Constellation: A Life in Letters", author: "Margot DeVries", genre: "Biography", priceCents: 2299, description: "Forty years of an astronomer's correspondence, edited into a single orbit.", rating: 4.7, stock: 7, isbn: "978-0-170001-01-3" },
-  { id: 35, title: "The Inventor's Daughter", author: "Hassan Karimi", genre: "Biography", priceCents: 2199, description: "She inherited his patents, his enemies, and the question he never answered.", rating: 4.5, stock: 10, isbn: "978-0-170002-02-0" },
-  { id: 36, title: "North: Notes from a Solo Life", author: "Anya Petrov", genre: "Biography", priceCents: 2099, description: "A memoir of building a house — and a self — at sixty degrees latitude.", rating: 4.3, stock: 9, isbn: "978-0-170003-03-7" },
-  { id: 37, title: "The Painter Who Stopped", author: "Lou Beckham", genre: "Biography", priceCents: 1999, description: "The decade between the artist's last canvas and her surprising return.", rating: 4.2, stock: 6, isbn: "978-0-170004-04-4" },
+  { id: 34, title: "Steve Jobs", author: "Walter Isaacson", genre: "Biography", priceCents: 2299, description: "An authorized, unsparing portrait of the Apple co-founder's genius and abrasion.", rating: 4.5, stock: 12, isbn: "9781451648539" },
+  { id: 35, title: "The Diary of a Young Girl", author: "Anne Frank", genre: "Biography", priceCents: 1299, description: "Two years in a hidden Amsterdam annex, written by a girl whose voice outlived the war.", rating: 4.7, stock: 16, isbn: "9780553296983" },
+  { id: 36, title: "Born a Crime", author: "Trevor Noah", genre: "Biography", priceCents: 1899, description: "A comedian's coming-of-age under apartheid, equal parts brutal and very funny.", rating: 4.8, stock: 14, isbn: "9780399588198" },
+  { id: 37, title: "Just Kids", author: "Patti Smith", genre: "Biography", priceCents: 1899, description: "Patti Smith and Robert Mapplethorpe make art, scrape by, and grow up in late New York.", rating: 4.5, stock: 6, isbn: "9780060936228" },
 
-  { id: 38, title: "Sundays in Lisbon", author: "Joana Mendes", genre: "Romance", priceCents: 1499, description: "Two strangers keep meeting on the same tram, never on purpose.", rating: 4.5, stock: 19, isbn: "978-0-180001-01-2" },
-  { id: 39, title: "The Boulangerie on Rue Claude", author: "Élise Mathieu", genre: "Romance", priceCents: 1599, description: "A baker and a cartographer argue about the shape of the neighborhood.", rating: 4.6, stock: 13, isbn: "978-0-180002-02-9" },
-  { id: 40, title: "Letters We Never Sent", author: "Noor Qadir", genre: "Romance", priceCents: 1399, description: "A box of unsent letters arrives forty years too early.", rating: 4.4, stock: 11, isbn: "978-0-180003-03-6" },
-  { id: 41, title: "Two Trains in Winter", author: "Hazel Whitmore", genre: "Romance", priceCents: 1699, description: "A delayed train, a borrowed scarf, and a city that won't sit still.", rating: 4.0, stock: 0, isbn: "978-0-180004-04-3" },
+  { id: 38, title: "Outlander", author: "Diana Gabaldon", genre: "Romance", priceCents: 1999, description: "A post-war combat nurse touches a standing stone and lands two centuries back in the Highlands.", rating: 4.6, stock: 13, isbn: "9780440212560" },
+  { id: 39, title: "Pride and Prejudice", author: "Jane Austen", genre: "Romance", priceCents: 999, description: "Five sisters, one insufferable gentleman, and the slow art of changing one's mind.", rating: 4.8, stock: 25, isbn: "9780141439518" },
+  { id: 40, title: "Jane Eyre", author: "Charlotte Brontë", genre: "Romance", priceCents: 1199, description: "An orphan turned governess holds her own against a brooding employer and a house with secrets.", rating: 4.7, stock: 18, isbn: "9780141441146" },
+  { id: 41, title: "The Time Traveler's Wife", author: "Audrey Niffenegger", genre: "Romance", priceCents: 1799, description: "A librarian who slips through time and the artist who waits for him try to build a life together.", rating: 4.4, stock: 9, isbn: "9780156029438" },
 ];
 
 const FAQS = [
@@ -117,22 +117,22 @@ function main() {
     .values(
       BOOKS.map((b) => ({
         ...b,
-        coverUrl: cover(b.id),
+        coverUrl: cover(b.isbn),
       })),
     )
     .run();
 
   const order1Items = [
     { bookId: 1, quantity: 1, unitPriceCents: 1899 },
-    { bookId: 3, quantity: 1, unitPriceCents: 2199 },
-    { bookId: 7, quantity: 1, unitPriceCents: 1699 },
+    { bookId: 3, quantity: 1, unitPriceCents: 1699 },
+    { bookId: 7, quantity: 1, unitPriceCents: 1499 },
   ];
   const order1Subtotal = order1Items.reduce(
     (s, l) => s + l.unitPriceCents * l.quantity,
     0,
   );
   const order2Items = [
-    { bookId: 19, quantity: 1, unitPriceCents: 2099 },
+    { bookId: 19, quantity: 1, unitPriceCents: 2499 },
     { bookId: 14, quantity: 1, unitPriceCents: 1599 },
   ];
   const order2Subtotal = order2Items.reduce(
