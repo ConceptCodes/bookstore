@@ -8,9 +8,12 @@
   "exports": {
     ".": "./src/index.ts",
     "./lib/utils": "./src/lib/utils.ts",
+    "./lib/format": "./src/lib/format.ts",
     "./hooks/*": "./src/hooks/*.ts",
     "./components/ui/*": "./src/components/ui/*.tsx",
-    "./components/ai-elements/*": "./src/components/ai-elements/*.tsx"
+    "./components/ai-elements/*": "./src/components/ai-elements/*.tsx",
+    "./components/molecules/*": "./src/components/molecules/*.tsx",
+    "./components/organisms/*": "./src/components/organisms/*.tsx"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
@@ -52,6 +55,7 @@
     "zod": "^4.4.3"
   },
   "peerDependencies": {
+    "next": "^16.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
