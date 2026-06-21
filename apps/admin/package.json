@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@bookstore/config": "workspace:*",
     "@bookstore/db": "workspace:*",
     "@bookstore/ui": "workspace:*",
     "class-variance-authority": "^0.7.1",
