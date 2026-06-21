@@ -13,7 +13,9 @@
   "scripts": {
     "generate": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate",
-    "seed": "bun run src/seed.ts",
+    "push": "drizzle-kit push",
+    "seed": "node src/seed.ts",
+    "setup": "drizzle-kit push && node src/seed.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -12,6 +12,8 @@ out/
 # database
 *.db
 *.db-journal
+*.db-wal
+*.db-shm
 *.sqlite
 
 # env

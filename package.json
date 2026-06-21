@@ -9,6 +9,8 @@
     "build": "bun --filter '*' build",
     "typecheck": "bun --filter '*' typecheck",
     "db:seed": "bun --filter @bookstore/db seed",
+    "db:push": "bun --filter @bookstore/db push",
+    "db:setup": "bun --filter @bookstore/db setup",
     "db:generate": "bun --filter @bookstore/db generate",
     "db:migrate": "bun --filter @bookstore/db migrate"
   },
