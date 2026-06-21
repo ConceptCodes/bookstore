@@ -1,0 +1,26 @@
+.agents/*
+
+# dependencies
+node_modules
+
+# build artifacts
+.next/
+dist/
+.eve/
+out/
+
+# database
+*.db
+*.db-journal
+*.sqlite
+
+# env
+.env
+.env.local
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# editor / OS
+.DS_Store

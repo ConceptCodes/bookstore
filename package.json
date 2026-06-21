@@ -1,0 +1,21 @@
+{
+  "name": "book-store",
+  "private": true,
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "bun --filter @bookstore/web dev",
+    "dev:admin": "bun --filter @bookstore/admin dev",
+    "dev:eve": "bun --filter @bookstore/eve dev",
+    "build": "bun --filter '*' build",
+    "typecheck": "bun --filter '*' typecheck",
+    "db:seed": "bun --filter @bookstore/db seed",
+    "db:generate": "bun --filter @bookstore/db generate",
+    "db:migrate": "bun --filter @bookstore/db migrate"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
