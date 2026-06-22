@@ -1,34 +1,36 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { EveMessage, EveMessagePart } from "eve/react";
-import { Message, MessageContent } from "@bookstore/ui";
+import type { EveMessage } from "eve/react";
+import {
+  Message,
+  MessageContent,
+} from "@bookstore/ui";
 import { SparklesIcon } from "lucide-react";
-import { ToolPartBadge } from "./tool-part-badge";
+import { ToolCard } from "./tool-cards";
 
 export type ChatStatus = "ready" | "submitted" | "streaming" | "error";
 
 export function MessageList({
   messages,
   status,
+  onRespond,
 }: {
   messages: readonly EveMessage[];
   status: ChatStatus;
+  onRespond?: (requestId: string, optionId: string) => void;
 }) {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = scrollRef.current;
+    const el = viewportRef.current;
     if (!el) return;
     el.scrollTop = el.scrollHeight;
   }, [messages, status]);
 
   if (messages.length === 0) {
     return (
-      <div
-        ref={scrollRef}
-        className="flex min-h-0 flex-1 flex-col items-center justify-center gap-3 p-6 text-center"
-      >
+      <div className="flex min-h-0 flex-1 flex-col items-center justify-center gap-3 p-6 text-center">
         <span className="flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
           <SparklesIcon className="size-5" />
         </span>
@@ -44,11 +46,11 @@ export function MessageList({
   }
 
   return (
-    <div ref={scrollRef} className="min-h-0 flex-1 space-y-3 overflow-y-auto p-3">
+    <div ref={viewportRef} className="min-h-0 flex-1 space-y-3 overflow-y-auto p-3">
       {messages.map((message) => (
         <Message key={message.id} from={message.role}>
           <MessageContent>
-            <MessageParts message={message} />
+            <MessageParts message={message} onRespond={onRespond} />
           </MessageContent>
         </Message>
       ))}
@@ -71,7 +73,13 @@ export function MessageList({
   );
 }
 
-function MessageParts({ message }: { message: EveMessage }) {
+function MessageParts({
+  message,
+  onRespond,
+}: {
+  message: EveMessage;
+  onRespond?: (requestId: string, optionId: string) => void;
+}) {
   const parts = message.parts;
   if (!parts || parts.length === 0) return null;
 
@@ -79,32 +87,37 @@ function MessageParts({ message }: { message: EveMessage }) {
     <>
       {parts.map((part, i) => {
         const key = `${message.id}-${i}`;
-        const rendered = renderPart(part, key);
-        return rendered;
+        const type = (part as { type?: string }).type;
+
+        if (type === "text") {
+          const text = (part as { text?: string }).text ?? "";
+          if (!text) return null;
+          return (
+            <p
+              key={key}
+              className="whitespace-pre-wrap text-sm leading-relaxed"
+            >
+              {text}
+            </p>
+          );
+        }
+
+        if (type === "reasoning") return null;
+
+        if (typeof type === "string" && type.includes("tool")) {
+          return (
+            <ToolCard
+              key={key}
+              part={part as never}
+              onRespond={onRespond}
+            />
+          );
+        }
+
+        return null;
       })}
     </>
   );
-}
-
-function renderPart(part: EveMessagePart, key: string) {
-  const type = (part as { type?: string }).type;
-
-  if (type === "text") {
-    const text = (part as { text?: string }).text ?? "";
-    return (
-      <p key={key} className="whitespace-pre-wrap text-sm leading-relaxed">
-        {text}
-      </p>
-    );
-  }
-
-  if (type === "reasoning") return null;
-
-  if (typeof type === "string" && type.startsWith("tool-")) {
-    return <ToolPartBadge key={key} part={part as never} />;
-  }
-
-  return null;
 }
 
 function Dot({ delay = "0s" }: { delay?: string }) {

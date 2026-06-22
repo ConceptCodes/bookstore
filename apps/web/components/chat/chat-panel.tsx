@@ -2,9 +2,12 @@
 
 import { useState, type FormEvent } from "react";
 import { useEveAgent } from "eve/react";
-import { Conversation } from "@bookstore/ui";
+import {
+  Button,
+  Conversation,
+  Textarea,
+} from "@bookstore/ui";
 import { ArrowUpIcon, SparklesIcon, StopCircleIcon } from "lucide-react";
-import { Button } from "@bookstore/ui";
 import { MessageList } from "./message-list";
 import { ComposerSuggestions } from "./composer-suggestions";
 
@@ -45,7 +48,15 @@ export function ChatPanel({
 
   return (
     <Conversation className="flex min-h-0 flex-1 flex-col">
-      <MessageList messages={agent.data.messages} status={agent.status} />
+      <MessageList
+        messages={agent.data.messages}
+        status={agent.status}
+        onRespond={(requestId, optionId) => {
+          void agent.send({
+            inputResponses: [{ requestId, optionId }],
+          } as never);
+        }}
+      />
 
       {!hasMessages && (
         <ComposerSuggestions
@@ -59,7 +70,7 @@ export function ChatPanel({
         onSubmit={onSubmit}
         className="flex items-end gap-2 border-t bg-background p-3"
       >
-        <textarea
+        <Textarea
           name="message"
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -72,7 +83,7 @@ export function ChatPanel({
           placeholder={isBusy ? "Page is responding…" : "Ask Page anything…"}
           rows={1}
           disabled={isBusy}
-          className="block max-h-40 min-h-[2.5rem] flex-1 resize-none rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+          className="block max-h-40 min-h-[2.5rem] flex-1 resize-none"
         />
         {isBusy ? (
           <Button
