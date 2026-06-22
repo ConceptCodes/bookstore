@@ -8,6 +8,7 @@ export * from "./components/molecules/genre-badge";
 export * from "./components/molecules/status-badge";
 export * from "./components/molecules/stat";
 export * from "./components/molecules/empty-state";
+export * from "./components/molecules/quantity-input";
 export * from "./components/molecules/book-card";
 export * from "./components/organisms/book-grid";
 

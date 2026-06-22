@@ -1,11 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import {
   CUSTOMER_USER_ID,
   addToCart,
   clearCart,
+  createOrder,
   createSupportTicket,
+  getShippingOption,
   removeFromCart,
   updateCartItemQty,
 } from "@bookstore/db";
@@ -41,4 +44,14 @@ export async function createSupportTicketAction(
   const ticket = createSupportTicket(CUSTOMER_USER_ID, subject, body);
   revalidate();
   return ticket;
+}
+
+export async function checkoutAction(shippingOptionId: string) {
+  const option = getShippingOption(shippingOptionId);
+  if (!option) {
+    throw new Error(`Unknown shipping option: ${shippingOptionId}`);
+  }
+  const detail = createOrder(CUSTOMER_USER_ID, shippingOptionId);
+  revalidate();
+  redirect(`/orders/${detail.order.id}`);
 }

@@ -20,9 +20,13 @@ const SESSION_KEY = "bookstore.eve.session";
 export function ChatSheet({
   open,
   onOpenChange,
+  pendingMessage,
+  onConsumePending,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  pendingMessage?: string | null;
+  onConsumePending?: () => void;
 }) {
   const [initialSession] = useState<unknown>(() => {
     if (typeof window === "undefined") return null;
@@ -33,6 +37,12 @@ export function ChatSheet({
       return null;
     }
   });
+
+  useEffect(() => {
+    if (!open) {
+      onConsumePending?.();
+    }
+  }, [open, onConsumePending]);
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -62,6 +72,8 @@ export function ChatSheet({
           >
             <ChatPanel
               initialSession={initialSession}
+              pendingMessage={pendingMessage}
+              onConsumePending={onConsumePending}
               onSessionChange={(session) => {
                 try {
                   window.localStorage.setItem(SESSION_KEY, JSON.stringify(session));
@@ -75,16 +87,4 @@ export function ChatSheet({
       </SheetContent>
     </Sheet>
   );
-}
-
-export function useEveSessionReset() {
-  useEffect(() => {
-    return () => {
-      try {
-        window.localStorage.removeItem(SESSION_KEY);
-      } catch {
-        // ignore
-      }
-    };
-  }, []);
 }

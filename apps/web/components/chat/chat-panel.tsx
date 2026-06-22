@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useEveAgent } from "eve/react";
 import {
   Button,
@@ -20,9 +20,13 @@ const QUICK_PROMPTS = [
 
 export function ChatPanel({
   initialSession,
+  pendingMessage,
+  onConsumePending,
   onSessionChange,
 }: {
   initialSession: unknown;
+  pendingMessage?: string | null;
+  onConsumePending?: () => void;
   onSessionChange?: (session: unknown) => void;
 }) {
   const agent = useEveAgent({
@@ -33,6 +37,19 @@ export function ChatPanel({
   const isBusy = agent.status === "submitted" || agent.status === "streaming";
   const hasMessages = agent.data.messages.length > 0;
   const [value, setValue] = useState("");
+  const sentRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (
+      pendingMessage &&
+      sentRef.current !== pendingMessage &&
+      agent.status === "ready"
+    ) {
+      sentRef.current = pendingMessage;
+      void agent.send({ message: pendingMessage });
+      onConsumePending?.();
+    }
+  }, [pendingMessage, agent, onConsumePending]);
 
   function submit(message: string) {
     const trimmed = message.trim();

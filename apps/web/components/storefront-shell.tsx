@@ -9,6 +9,7 @@ type ChatApi = {
   open: () => void;
   close: () => void;
   toggle: () => void;
+  openWithMessage: (message: string) => void;
   isOpen: boolean;
 };
 
@@ -28,12 +29,17 @@ export function StorefrontShell({
   cartItemCount: number;
 }) {
   const [chatOpen, setChatOpen] = useState(false);
+  const [pendingMessage, setPendingMessage] = useState<string | null>(null);
 
   const api = useMemo<ChatApi>(
     () => ({
       open: () => setChatOpen(true),
       close: () => setChatOpen(false),
       toggle: () => setChatOpen((v) => !v),
+      openWithMessage: (message: string) => {
+        setPendingMessage(message);
+        setChatOpen(true);
+      },
       isOpen: chatOpen,
     }),
     [chatOpen],
@@ -45,7 +51,12 @@ export function StorefrontShell({
       <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         {children}
       </main>
-      <ChatSheet open={chatOpen} onOpenChange={setChatOpen} />
+      <ChatSheet
+        open={chatOpen}
+        onOpenChange={setChatOpen}
+        pendingMessage={pendingMessage}
+        onConsumePending={() => setPendingMessage(null)}
+      />
     </ChatContext.Provider>
   );
 }
