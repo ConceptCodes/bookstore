@@ -7,7 +7,6 @@ import {
   TableHeader,
   TableRow,
   EmptyState,
-  StatusBadge,
   formatCurrency,
   formatDate,
 } from "@bookstore/ui";
@@ -123,5 +122,3 @@ export default async function OrdersPage({
     </>
   );
 }
-
-void StatusBadge;

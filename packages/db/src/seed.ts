@@ -101,6 +101,7 @@ function reset() {
     DELETE FROM faq;
     DELETE FROM books;
     DELETE FROM users;
+    DELETE FROM sqlite_sequence;
   `);
 }
 

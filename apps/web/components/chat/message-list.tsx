@@ -5,6 +5,7 @@ import type { EveMessage } from "eve/react";
 import {
   Message,
   MessageContent,
+  Streamdown,
 } from "@bookstore/ui";
 import { SparklesIcon } from "lucide-react";
 import { ToolCard } from "./tool-cards";
@@ -93,12 +94,12 @@ function MessageParts({
           const text = (part as { text?: string }).text ?? "";
           if (!text) return null;
           return (
-            <p
+            <Streamdown
               key={key}
-              className="whitespace-pre-wrap text-sm leading-relaxed"
+              className="text-sm leading-relaxed [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 [&_a]:underline [&_li]:my-0.5 [&_ol]:list-decimal [&_p]:my-1.5 [&_strong]:font-semibold [&_ul]:list-disc"
             >
               {text}
-            </p>
+            </Streamdown>
           );
         }
 

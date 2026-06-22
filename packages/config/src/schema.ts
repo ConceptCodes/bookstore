@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import { z } from "zod";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const DEFAULT_DB_PATH = resolve(here, "..", "..", "db", "data", "bookstore.db");
+const DEFAULT_DB_PATH = resolve(here, "..", "..", "..", ".data", "bookstore.db");
 
 export const envSchema = z.object({
   NODE_ENV: z

@@ -1,5 +1,6 @@
 export { cn } from "./lib/utils";
 export * from "./lib/format";
+export { Streamdown } from "streamdown";
 
 export * from "./components/molecules/book-cover";
 export * from "./components/molecules/price-tag";
