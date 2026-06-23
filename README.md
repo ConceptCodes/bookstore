@@ -236,6 +236,12 @@ Reuses shared molecules from `@bookstore/ui` — **zero new atoms needed for adm
 
 ---
 
+## Built with
+
+This project was built entirely with **Z.ai GLM-5.2**, with some help from **Claude Sonnet 4.6** on the UI design.
+
+---
+
 ## License
 
 Mock demo project. Book metadata and cover images are pulled from [OpenLibrary](https://openlibrary.org) under their public API.
