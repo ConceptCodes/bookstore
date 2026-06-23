@@ -2,7 +2,7 @@
 
 A mock bookstore monorepo with a customer storefront, an admin dashboard, and **Page** — an Eve agent concierge customers chat with to discover books, manage their cart, check out, and get support.
 
-Built with **Eve** (Vercel's filesystem-first agent framework), **Next.js 16** (App Router, Turbopack), **Drizzle ORM** on **SQLite** (`better-sqlite3`), **shadcn/ui** + **AI Elements**, and **Bun workspaces**.
+Built with [**Eve**](https://vercel.com/eve) (Vercel's filesystem-first agent framework), [**Next.js 16**](https://nextjs.org) (App Router, Turbopack), [**Drizzle ORM**](https://orm.drizzle.team) on [**SQLite**](https://www.sqlite.org) ([`better-sqlite3`](https://github.com/WiseLibs/better-sqlite3)), [**shadcn/ui**](https://ui.shadcn.com) + [**AI Elements**](https://github.com/vercel/ai-elements), and [**Bun**](https://bun.sh) workspaces.
 
 ---
 
