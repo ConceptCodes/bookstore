@@ -15,8 +15,10 @@ import {
   CardContent,
   EmptyState,
   GenreBadge,
+  Ornament,
   PriceTag,
   RatingStars,
+  SectionHeading,
   Separator,
 } from "@bookstore/ui";
 import { getBookById, searchBooks } from "@bookstore/db";
@@ -52,8 +54,13 @@ export default async function BookDetailPage({
 
       <div className="grid gap-8 md:grid-cols-[260px_minmax(0,1fr)] lg:gap-12">
         <div className="space-y-3">
-          <div className="aspect-[2/3] overflow-hidden rounded-xl border bg-muted shadow-sm">
+          <div className="relative aspect-[2/3] overflow-hidden rounded-xl border bg-muted shadow-sm">
             <BookCover title={book.title} coverUrl={book.coverUrl} />
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-y-0 left-0 w-[5%] min-w-[3px] bg-gradient-to-r from-black/22 to-transparent"
+            />
+            <span aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
           </div>
           <p className="text-[10px] uppercase tracking-wide text-muted-foreground">
             ISBN {book.isbn ?? "—"}
@@ -128,15 +135,13 @@ export default async function BookDetailPage({
 
       <Separator />
 
-      <section className="space-y-4">
-        <div className="space-y-1">
-          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-            More like this
-          </p>
-          <h2 className="text-lg font-semibold tracking-tight sm:text-xl">
-            More in {book.genre}
-          </h2>
-        </div>
+      <Ornament glyph="star" className="!justify-start" />
+
+      <section className="space-y-5">
+        <SectionHeading
+          eyebrow="More like this"
+          title={`More in ${book.genre}`}
+        />
         {related.length === 0 ? (
           <EmptyState
             title="No related books"
