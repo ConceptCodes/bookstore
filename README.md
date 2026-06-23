@@ -241,7 +241,7 @@ Reuses shared molecules from `@bookstore/ui` — **zero new atoms needed for adm
 
 ## Built with
 
-This project was built entirely with **Z.ai GLM-5.2**, with some help from **Claude Sonnet 4.6** on the UI design. Code review and monorepo hardening were handled by **OpenAI GPT-5.5 Medium**.
+This project was built entirely with [**Z.ai GLM-5.2**](https://docs.z.ai/guides/llm/glm-5.2), with some help from [**Claude Sonnet 4.6**](https://platform.claude.com/docs/en/about-claude/models/overview) on the UI design. Code review and monorepo hardening were handled by [**OpenAI GPT-5.5 Medium**](https://developers.openai.com/api/docs/models/gpt-5.5).
 
 ---
 
