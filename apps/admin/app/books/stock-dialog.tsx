@@ -12,7 +12,6 @@ import {
   DialogTrigger,
 } from "@bookstore/ui";
 import { Input } from "@bookstore/ui";
-import { Label } from "@bookstore/ui";
 import { BoxesIcon, LoaderIcon, MinusIcon, PlusIcon } from "lucide-react";
 import { adjustStockAction } from "@/app/actions";
 import type { Book } from "@bookstore/db";
@@ -73,9 +72,7 @@ export function StockAdjustDialog({ book }: { book: Book }) {
               type="button"
               variant="outline"
               size="icon"
-              onClick={() =>
-                setValue(String(Math.max(0, Number.parseInt(value, 10) - 1)))
-              }
+              onClick={() => setValue(String(Math.max(0, Number.parseInt(value, 10) - 1)))}
             >
               <MinusIcon className="size-4" />
             </Button>
@@ -90,9 +87,7 @@ export function StockAdjustDialog({ book }: { book: Book }) {
               type="button"
               variant="outline"
               size="icon"
-              onClick={() =>
-                setValue(String(Number.parseInt(value || "0", 10) + 1))
-              }
+              onClick={() => setValue(String(Number.parseInt(value || "0", 10) + 1))}
             >
               <PlusIcon className="size-4" />
             </Button>

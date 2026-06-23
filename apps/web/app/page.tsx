@@ -1,12 +1,6 @@
 import Link from "next/link";
 import { ArrowRightIcon, SearchIcon, SparklesIcon } from "lucide-react";
-import {
-  BookGrid,
-  EmptyState,
-  Ornament,
-  SectionHeading,
-  cn,
-} from "@bookstore/ui";
+import { BookGrid, EmptyState, Ornament, SectionHeading, cn } from "@bookstore/ui";
 import {
   CUSTOMER_USER_ID,
   getFeaturedBooks,
@@ -37,7 +31,12 @@ export default async function HomePage({
 
   return (
     <div className="space-y-14">
-      <HeroSection query={query} isBrowsing={isBrowsing} totalBooks={totalBooks} totalGenres={genres.length} />
+      <HeroSection
+        query={query}
+        isBrowsing={isBrowsing}
+        totalBooks={totalBooks}
+        totalGenres={genres.length}
+      />
 
       {!isBrowsing && recommendations.length > 0 && (
         <section className="space-y-5">
@@ -72,16 +71,14 @@ export default async function HomePage({
         <SectionHeading
           eyebrow={isBrowsing ? "Results" : "Browse"}
           title={
-            isBrowsing
-              ? query
-                ? `Matching “${query}”`
-                : `Genre: ${genreFilter}`
-              : "All books"
+            isBrowsing ? (query ? `Matching “${query}”` : `Genre: ${genreFilter}`) : "All books"
           }
         />
 
         <div className="flex flex-wrap items-center gap-1.5">
-          <GenreChip href="/" active={!genreFilter}>All</GenreChip>
+          <GenreChip href="/" active={!genreFilter}>
+            All
+          </GenreChip>
           {genres.map((g) => (
             <GenreChip
               key={g}
@@ -139,7 +136,9 @@ function HeroSection({
       <div
         aria-hidden
         className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full opacity-40 blur-3xl"
-        style={{ background: "radial-gradient(closest-side, oklch(0.72 0.12 68 / 0.35), transparent)" }}
+        style={{
+          background: "radial-gradient(closest-side, oklch(0.72 0.12 68 / 0.35), transparent)",
+        }}
       />
 
       <div className="relative px-6 py-10 sm:px-10 sm:py-14">
@@ -152,8 +151,7 @@ function HeroSection({
 
         <h1 className="mt-3 max-w-2xl font-display text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl [text-wrap:balance]">
           Find your next{" "}
-          <em className="font-display italic text-[oklch(0.55_0.13_65)]">favorite</em>{" "}
-          book.
+          <em className="font-display italic text-[oklch(0.55_0.13_65)]">favorite</em> book.
         </h1>
 
         <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-muted-foreground">
@@ -204,7 +202,9 @@ function HeroSection({
 function Stat({ label, value, className }: { label: string; value: string; className?: string }) {
   return (
     <div className={cn("flex items-baseline gap-1.5 pr-6", className)}>
-      <span className="font-display text-sm font-semibold text-foreground tabular-nums">{value}</span>
+      <span className="font-display text-sm font-semibold text-foreground tabular-nums">
+        {value}
+      </span>
       <span className="text-muted-foreground/80">{label}</span>
     </div>
   );

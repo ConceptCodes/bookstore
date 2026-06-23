@@ -1,11 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeftIcon,
-  BookOpenIcon,
-  CheckCircle2Icon,
-  PackageIcon,
-} from "lucide-react";
+import { ArrowLeftIcon, BookOpenIcon, CheckCircle2Icon, PackageIcon } from "lucide-react";
 import {
   Badge,
   BookCover,
@@ -25,11 +20,7 @@ import { getBookById, searchBooks } from "@bookstore/db";
 import { AddToCartButton } from "@/components/add-to-cart-button";
 import { AskAboutBookButton } from "@/components/ask-about-book-button";
 
-export default async function BookDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function BookDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const bookId = Number.parseInt(id, 10);
   if (!Number.isFinite(bookId) || bookId <= 0) notFound();
@@ -60,7 +51,10 @@ export default async function BookDetailPage({
               aria-hidden
               className="pointer-events-none absolute inset-y-0 left-0 w-[5%] min-w-[3px] bg-gradient-to-r from-black/22 to-transparent"
             />
-            <span aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5"
+            />
           </div>
           <p className="text-[10px] uppercase tracking-wide text-muted-foreground">
             ISBN {book.isbn ?? "—"}
@@ -72,12 +66,18 @@ export default async function BookDetailPage({
             <div className="flex items-center gap-2">
               <GenreBadge genre={book.genre} />
               {outOfStock && (
-                <Badge variant="outline" className="border-rose-500/40 text-rose-600 dark:text-rose-400">
+                <Badge
+                  variant="outline"
+                  className="border-rose-500/40 text-rose-600 dark:text-rose-400"
+                >
                   Out of stock
                 </Badge>
               )}
               {!outOfStock && book.stock <= 3 && (
-                <Badge variant="outline" className="border-amber-500/40 text-amber-700 dark:text-amber-400">
+                <Badge
+                  variant="outline"
+                  className="border-amber-500/40 text-amber-700 dark:text-amber-400"
+                >
                   Only {book.stock} left
                 </Badge>
               )}
@@ -89,9 +89,7 @@ export default async function BookDetailPage({
             <div className="flex items-center gap-3 text-sm">
               <RatingStars rating={book.rating} showNumber size={16} />
               <Separator orientation="vertical" className="h-4" />
-              <span className="text-muted-foreground">
-                {book.stock} in stock
-              </span>
+              <span className="text-muted-foreground">{book.stock} in stock</span>
             </div>
           </div>
 
@@ -108,12 +106,7 @@ export default async function BookDetailPage({
             {outOfStock ? (
               <Button disabled>Out of stock</Button>
             ) : (
-              <AddToCartButton
-                bookId={book.id}
-                size="lg"
-                variant="default"
-                label="Add to cart"
-              />
+              <AddToCartButton bookId={book.id} size="lg" variant="default" label="Add to cart" />
             )}
             <AskAboutBookButton bookTitle={book.title} bookId={book.id} />
           </div>
@@ -138,10 +131,7 @@ export default async function BookDetailPage({
       <Ornament glyph="star" className="!justify-start" />
 
       <section className="space-y-5">
-        <SectionHeading
-          eyebrow="More like this"
-          title={`More in ${book.genre}`}
-        />
+        <SectionHeading eyebrow="More like this" title={`More in ${book.genre}`} />
         {related.length === 0 ? (
           <EmptyState
             title="No related books"

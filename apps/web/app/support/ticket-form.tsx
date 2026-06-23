@@ -33,8 +33,8 @@ export function TicketForm({ onSuccess }: { onSuccess?: (ticketId: number) => vo
               Ticket #{done} opened
             </p>
             <p className="mt-1 text-xs text-emerald-700 dark:text-emerald-300">
-              We&apos;ll get back to you within one business day. Refresh this page to
-              see your ticket history.
+              We&apos;ll get back to you within one business day. Refresh this page to see your
+              ticket history.
             </p>
             <Button
               type="button"

@@ -11,9 +11,7 @@ export default defineTool({
   async execute({ orderId }) {
     const detail = getOrderDetail(orderId, CUSTOMER_USER_ID);
     if (!detail) {
-      throw new Error(
-        `Order ${orderId} not found or doesn't belong to this account.`,
-      );
+      throw new Error(`Order ${orderId} not found or doesn't belong to this account.`);
     }
     return detail;
   },

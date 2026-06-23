@@ -20,9 +20,7 @@ export default async function OrdersPage() {
   return (
     <div className="space-y-6">
       <div className="space-y-1">
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-          Your orders
-        </h1>
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Your orders</h1>
         <p className="text-sm text-muted-foreground">
           {orders.length === 0
             ? "No orders yet."

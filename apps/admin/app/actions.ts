@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import {
-  type Book,
   type OrderStatus,
   type TicketStatus,
   adjustStock,
@@ -65,10 +64,7 @@ export async function deleteBookAction(id: number) {
   return ok;
 }
 
-export async function updateOrderStatusAction(
-  orderId: number,
-  status: OrderStatus,
-) {
+export async function updateOrderStatusAction(orderId: number, status: OrderStatus) {
   const order = updateOrderStatus(orderId, status);
   revalidate();
   return order;
@@ -86,10 +82,7 @@ export async function closeTicketAction(ticketId: number) {
   return ticket;
 }
 
-export async function updateTicketStatusAction(
-  ticketId: number,
-  status: TicketStatus,
-) {
+export async function updateTicketStatusAction(ticketId: number, status: TicketStatus) {
   const { updateTicketStatus } = await import("@bookstore/db");
   const ticket = updateTicketStatus(ticketId, status);
   revalidate();

@@ -1,16 +1,7 @@
 import Link from "next/link";
 import { CardShell } from "./card-shell";
-import {
-  MinusIcon,
-  PlusIcon,
-  ShoppingCartIcon,
-  Trash2Icon,
-} from "lucide-react";
-import {
-  BookCover,
-  Separator,
-  formatCurrency,
-} from "@bookstore/ui";
+import { MinusIcon, PlusIcon, ShoppingCartIcon, Trash2Icon } from "lucide-react";
+import { BookCover, Separator, formatCurrency } from "@bookstore/ui";
 import type { Cart } from "@bookstore/db";
 
 const TITLES: Record<string, { label: string; icon: typeof ShoppingCartIcon }> = {
@@ -38,11 +29,7 @@ export function CartCard({
       icon={meta.icon}
       title={meta.label}
       action={
-        <Link
-          href="/cart"
-          prefetch
-          className="text-xs font-medium text-primary hover:underline"
-        >
+        <Link href="/cart" prefetch className="text-xs font-medium text-primary hover:underline">
           View cart
         </Link>
       }
@@ -53,10 +40,7 @@ export function CartCard({
         <>
           <ul className="-mx-1 divide-y">
             {cart.lines.map((line) => (
-              <li
-                key={line.cartItemId}
-                className="flex items-center gap-3 px-1 py-2"
-              >
+              <li key={line.cartItemId} className="flex items-center gap-3 px-1 py-2">
                 <div className="size-[40px] shrink-0 overflow-hidden rounded bg-muted">
                   <BookCover title={line.title} coverUrl={line.coverUrl} />
                 </div>

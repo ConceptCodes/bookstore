@@ -28,9 +28,7 @@ export function AccountCard({ output }: { output: AccountSummary }) {
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-md border bg-muted/30 p-2">
-      <p className="text-[10px] uppercase tracking-wide text-muted-foreground">
-        {label}
-      </p>
+      <p className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</p>
       <p className="text-sm font-semibold tabular-nums">{value}</p>
     </div>
   );

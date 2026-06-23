@@ -1,14 +1,7 @@
 import Link from "next/link";
 import { BookOpenIcon } from "lucide-react";
 import { CardShell } from "./card-shell";
-import {
-  Badge,
-  BookCover,
-  GenreBadge,
-  PriceTag,
-  RatingStars,
-  formatCurrency,
-} from "@bookstore/ui";
+import { Badge, BookCover, GenreBadge, PriceTag, RatingStars, formatCurrency } from "@bookstore/ui";
 import type { Book } from "@bookstore/db";
 import { AddToCartButton } from "@/components/add-to-cart-button";
 
@@ -40,21 +33,25 @@ export function BookDetailsCard({ output }: { output: Book }) {
             <RatingStars rating={book.rating} showNumber size={12} />
             <GenreBadge genre={book.genre} />
           </div>
-          <p className="line-clamp-3 text-xs text-muted-foreground">
-            {book.description}
-          </p>
+          <p className="line-clamp-3 text-xs text-muted-foreground">{book.description}</p>
         </div>
       </div>
       <div className="mt-3 flex items-center justify-between gap-2 border-t pt-3">
         <div className="flex items-baseline gap-2">
           <PriceTag priceCents={book.priceCents} />
           {outOfStock && (
-            <Badge variant="outline" className="border-rose-500/40 text-rose-600 dark:text-rose-400">
+            <Badge
+              variant="outline"
+              className="border-rose-500/40 text-rose-600 dark:text-rose-400"
+            >
               Out of stock
             </Badge>
           )}
           {!outOfStock && book.stock <= 3 && (
-            <Badge variant="outline" className="border-amber-500/40 text-amber-700 dark:text-amber-400">
+            <Badge
+              variant="outline"
+              className="border-amber-500/40 text-amber-700 dark:text-amber-400"
+            >
               Only {book.stock} left
             </Badge>
           )}

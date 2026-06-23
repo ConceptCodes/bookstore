@@ -14,20 +14,12 @@ import {
 import { Input } from "@bookstore/ui";
 import { Label } from "@bookstore/ui";
 import { Textarea } from "@bookstore/ui";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@bookstore/ui";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@bookstore/ui";
 import { PlusIcon, PencilIcon, LoaderIcon } from "lucide-react";
 import { createBookAction, updateBookAction, type BookInput } from "@/app/actions";
 import type { Book } from "@bookstore/db";
 
-type Props =
-  | { mode: "create"; genres: string[] }
-  | { mode: "edit"; book: Book; genres: string[] };
+type Props = { mode: "create"; genres: string[] } | { mode: "edit"; book: Book; genres: string[] };
 
 function bookToInput(book: Book): BookInput {
   return {
@@ -49,22 +41,20 @@ export function BookFormDialog(props: Props) {
   const [pending, startTransition] = useTransition();
   const [title, setTitle] = useState(props.mode === "edit" ? props.book.title : "");
   const [author, setAuthor] = useState(props.mode === "edit" ? props.book.author : "");
-  const [genre, setGenre] = useState(props.mode === "edit" ? props.book.genre : props.genres[0] ?? "");
+  const [genre, setGenre] = useState(
+    props.mode === "edit" ? props.book.genre : (props.genres[0] ?? ""),
+  );
   const [priceDollars, setPriceDollars] = useState(
     props.mode === "edit" ? (props.book.priceCents / 100).toFixed(2) : "",
   );
-  const [rating, setRating] = useState(
-    props.mode === "edit" ? String(props.book.rating) : "4.5",
-  );
-  const [stock, setStock] = useState(
-    props.mode === "edit" ? String(props.book.stock) : "0",
-  );
+  const [rating, setRating] = useState(props.mode === "edit" ? String(props.book.rating) : "4.5");
+  const [stock, setStock] = useState(props.mode === "edit" ? String(props.book.stock) : "0");
   const [description, setDescription] = useState(
     props.mode === "edit" ? props.book.description : "",
   );
-  const [isbn, setIsbn] = useState(props.mode === "edit" ? props.book.isbn ?? "" : "");
+  const [isbn, setIsbn] = useState(props.mode === "edit" ? (props.book.isbn ?? "") : "");
   const [coverUrl, setCoverUrl] = useState(
-    props.mode === "edit" ? props.book.coverUrl ?? "" : "",
+    props.mode === "edit" ? (props.book.coverUrl ?? "") : "",
   );
 
   useEffect(() => {

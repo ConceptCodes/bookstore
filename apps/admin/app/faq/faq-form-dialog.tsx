@@ -14,13 +14,7 @@ import {
   Label,
   Textarea,
 } from "@bookstore/ui";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@bookstore/ui";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@bookstore/ui";
 import { LoaderIcon, PencilIcon, PlusIcon } from "lucide-react";
 import { createFaqAction, updateFaqAction } from "@/app/actions";
 import type { Faq } from "@bookstore/db";
@@ -32,14 +26,10 @@ type Props =
 export function FaqFormDialog(props: Props) {
   const [open, setOpen] = useState(false);
   const [pending, startTransition] = useTransition();
-  const [question, setQuestion] = useState(
-    props.mode === "edit" ? props.faq.question : "",
-  );
+  const [question, setQuestion] = useState(props.mode === "edit" ? props.faq.question : "");
   const [answer, setAnswer] = useState(props.mode === "edit" ? props.faq.answer : "");
   const [category, setCategory] = useState(
-    props.mode === "edit"
-      ? props.faq.category
-      : props.categories[0] ?? "Shipping",
+    props.mode === "edit" ? props.faq.category : (props.categories[0] ?? "Shipping"),
   );
 
   useEffect(() => {
@@ -88,21 +78,13 @@ export function FaqFormDialog(props: Props) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle>
-            {props.mode === "create" ? "Add FAQ entry" : "Edit entry"}
-          </DialogTitle>
-          <DialogDescription>
-            FAQ entries appear in the storefront support page.
-          </DialogDescription>
+          <DialogTitle>{props.mode === "create" ? "Add FAQ entry" : "Edit entry"}</DialogTitle>
+          <DialogDescription>FAQ entries appear in the storefront support page.</DialogDescription>
         </DialogHeader>
         <form onSubmit={onSubmit} className="space-y-3">
           <div className="space-y-1.5">
             <Label className="text-xs">Question</Label>
-            <Input
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
-              required
-            />
+            <Input value={question} onChange={(e) => setQuestion(e.target.value)} required />
           </div>
           <div className="space-y-1.5">
             <Label className="text-xs">Answer</Label>

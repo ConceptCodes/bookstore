@@ -17,11 +17,7 @@ import { TicketActions } from "../ticket-actions";
 
 export const dynamic = "force-dynamic";
 
-export default async function TicketDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function TicketDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const ticketId = Number.parseInt(id, 10);
   if (!Number.isFinite(ticketId) || ticketId <= 0) notFound();
@@ -68,9 +64,7 @@ export default async function TicketDetailPage({
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="whitespace-pre-wrap text-sm leading-relaxed">
-                {ticket.body}
-              </p>
+              <p className="whitespace-pre-wrap text-sm leading-relaxed">{ticket.body}</p>
               <p className="mt-3 text-xs text-muted-foreground">
                 Opened {formatDateTime(ticket.createdAt)}
               </p>
@@ -98,9 +92,7 @@ export default async function TicketDetailPage({
           </CardHeader>
           <CardContent>
             {otherTickets.length === 0 ? (
-              <p className="text-sm text-muted-foreground">
-                No other tickets from this customer.
-              </p>
+              <p className="text-sm text-muted-foreground">No other tickets from this customer.</p>
             ) : (
               <ul className="space-y-2">
                 {otherTickets.map((t) => (
@@ -114,9 +106,7 @@ export default async function TicketDetailPage({
                         <span className="font-medium">#{t.id}</span>
                         <StatusBadge status={t.status} kind="ticket" />
                       </div>
-                      <p className="mt-0.5 truncate text-xs text-muted-foreground">
-                        {t.subject}
-                      </p>
+                      <p className="mt-0.5 truncate text-xs text-muted-foreground">{t.subject}</p>
                     </Link>
                   </li>
                 ))}

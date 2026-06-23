@@ -11,9 +11,7 @@ export default defineTool({
   async execute({ ticketId }) {
     const ticket = getSupportTicket(ticketId, CUSTOMER_USER_ID);
     if (!ticket) {
-      throw new Error(
-        `Ticket ${ticketId} not found or doesn't belong to this account.`,
-      );
+      throw new Error(`Ticket ${ticketId} not found or doesn't belong to this account.`);
     }
     return ticket;
   },

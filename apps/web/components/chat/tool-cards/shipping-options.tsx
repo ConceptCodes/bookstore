@@ -8,9 +8,7 @@ export function ShippingOptionsCard({ output }: { output: ShippingOption[] }) {
   if (options.length === 0) {
     return (
       <CardShell icon={TruckIcon} title="Shipping options">
-        <p className="text-sm text-muted-foreground">
-          No shipping options available.
-        </p>
+        <p className="text-sm text-muted-foreground">No shipping options available.</p>
       </CardShell>
     );
   }

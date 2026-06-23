@@ -40,9 +40,7 @@ export function AdminSidebar({ cartItemCount }: { cartItemCount?: number }) {
         </span>
         <div className="leading-tight">
           <p className="font-display text-base font-semibold tracking-tight">Bookstore</p>
-          <p className="text-[10px] uppercase tracking-wide text-muted-foreground">
-            Admin
-          </p>
+          <p className="text-[10px] uppercase tracking-wide text-muted-foreground">Admin</p>
         </div>
       </div>
 
@@ -53,10 +51,7 @@ export function AdminSidebar({ cartItemCount }: { cartItemCount?: number }) {
               {group.label}
             </p>
             {group.items.map((item) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
+              const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
               const Icon = item.icon;
               return (
                 <Link

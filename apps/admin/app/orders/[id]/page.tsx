@@ -1,11 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeftIcon,
-  CheckCircle2Icon,
-  MapPinIcon,
-  PackageIcon,
-} from "lucide-react";
+import { ArrowLeftIcon, CheckCircle2Icon, MapPinIcon, PackageIcon } from "lucide-react";
 import {
   Button,
   Card,
@@ -74,9 +69,7 @@ export default async function AdminOrderDetailPage({
                     >
                       {item.title}
                     </Link>
-                    <p className="truncate text-xs text-muted-foreground">
-                      {item.author}
-                    </p>
+                    <p className="truncate text-xs text-muted-foreground">{item.author}</p>
                     <p className="text-xs text-muted-foreground">
                       Qty {item.quantity} · {formatCurrency(item.unitPriceCents)} each
                     </p>
@@ -92,26 +85,21 @@ export default async function AdminOrderDetailPage({
               <div className="flex items-baseline justify-between">
                 <span className="text-muted-foreground">Subtotal</span>
                 <span className="tabular-nums">
-                  {formatCurrency(
-                    items.reduce((s, i) => s + i.lineTotalCents, 0),
-                  )}
+                  {formatCurrency(items.reduce((s, i) => s + i.lineTotalCents, 0))}
                 </span>
               </div>
               <div className="flex items-baseline justify-between">
                 <span className="text-muted-foreground">Shipping</span>
                 <span className="tabular-nums">
                   {formatCurrency(
-                    order.totalCents -
-                      items.reduce((s, i) => s + i.lineTotalCents, 0),
+                    order.totalCents - items.reduce((s, i) => s + i.lineTotalCents, 0),
                   )}
                 </span>
               </div>
               <Separator className="my-2" />
               <div className="flex items-baseline justify-between text-base font-semibold">
                 <span>Total</span>
-                <span className="tabular-nums">
-                  {formatCurrency(order.totalCents)}
-                </span>
+                <span className="tabular-nums">{formatCurrency(order.totalCents)}</span>
               </div>
             </div>
           </CardContent>
@@ -143,9 +131,7 @@ export default async function AdminOrderDetailPage({
               </div>
               <div className="flex items-center justify-between gap-2">
                 <span className="text-muted-foreground">Total</span>
-                <span className="font-medium tabular-nums">
-                  {formatCurrency(order.totalCents)}
-                </span>
+                <span className="font-medium tabular-nums">{formatCurrency(order.totalCents)}</span>
               </div>
               {order.status === "shipped" && (
                 <div className="flex items-center gap-2 rounded-md bg-emerald-50 p-2 text-xs text-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-200">

@@ -41,9 +41,7 @@ export function CartLineRow({ line }: { line: CartLine }) {
           {line.title}
         </Link>
         <p className="truncate text-xs text-muted-foreground">{line.author}</p>
-        <p className="text-xs text-muted-foreground">
-          {formatUnit(line.unitPriceCents)} each
-        </p>
+        <p className="text-xs text-muted-foreground">{formatUnit(line.unitPriceCents)} each</p>
       </div>
 
       <div className="flex items-center rounded-md border">
@@ -56,9 +54,7 @@ export function CartLineRow({ line }: { line: CartLine }) {
         >
           <MinusIcon className="size-3.5" />
         </button>
-        <span className="w-8 text-center text-sm font-medium tabular-nums">
-          {line.quantity}
-        </span>
+        <span className="w-8 text-center text-sm font-medium tabular-nums">{line.quantity}</span>
         <button
           type="button"
           className="flex size-7 items-center justify-center text-muted-foreground hover:bg-accent disabled:opacity-40"

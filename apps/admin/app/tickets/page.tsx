@@ -30,13 +30,10 @@ export default async function TicketsPage({
   searchParams: Promise<{ status?: string }>;
 }) {
   const { status } = await searchParams;
-  const statusFilter =
-    status && status !== "all" ? (status as TicketStatus) : undefined;
+  const statusFilter = status && status !== "all" ? (status as TicketStatus) : undefined;
 
   const allTickets = listAllTickets();
-  const tickets = statusFilter
-    ? allTickets.filter((t) => t.status === statusFilter)
-    : allTickets;
+  const tickets = statusFilter ? allTickets.filter((t) => t.status === statusFilter) : allTickets;
 
   return (
     <>

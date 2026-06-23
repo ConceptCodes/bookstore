@@ -1,12 +1,7 @@
 import Link from "next/link";
 import { SparklesIcon, SearchIcon } from "lucide-react";
 import { CardShell } from "./card-shell";
-import {
-  Badge,
-  BookCover,
-  PriceTag,
-  RatingStars,
-} from "@bookstore/ui";
+import { Badge, BookCover, PriceTag, RatingStars } from "@bookstore/ui";
 import type { Book } from "@bookstore/db";
 import { AddToCartButton } from "@/components/add-to-cart-button";
 
@@ -38,9 +33,7 @@ export function SearchBooksCard({
   if (books.length === 0) {
     return (
       <CardShell icon={Icon} title={heading}>
-        <p className="text-sm text-muted-foreground">
-          Try a different search or browse a genre.
-        </p>
+        <p className="text-sm text-muted-foreground">Try a different search or browse a genre.</p>
       </CardShell>
     );
   }

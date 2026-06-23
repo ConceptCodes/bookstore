@@ -2,9 +2,7 @@ import { envSchema, type Env } from "./schema.ts";
 
 export { envSchema, type Env, type EnvSchema } from "./schema.ts";
 
-export function parseEnv(
-  source: Record<string, string | undefined> = process.env,
-): Env {
+export function parseEnv(source: Record<string, string | undefined> = process.env): Env {
   const result = envSchema.safeParse(source);
   if (!result.success) {
     const issues = result.error.issues
@@ -26,11 +24,7 @@ export function requireEnv<K extends keyof Env>(key: K): NonNullable<Env[K]> {
 }
 
 export function hasModelCredentials(): boolean {
-  return Boolean(
-    env.AI_GATEWAY_API_KEY ||
-      env.ANTHROPIC_API_KEY ||
-      env.VERCEL_OIDC_TOKEN,
-  );
+  return Boolean(env.AI_GATEWAY_API_KEY || env.ANTHROPIC_API_KEY || env.VERCEL_OIDC_TOKEN);
 }
 
 export const isDev = env.NODE_ENV === "development";

@@ -75,10 +75,7 @@ export function CheckoutForm({
 
       <div className="space-y-1.5 text-sm">
         <Row label="Subtotal" value={subtotalCents} />
-        <Row
-          label={`Shipping (${selected?.label ?? "—"})`}
-          value={selected?.costCents ?? 0}
-        />
+        <Row label={`Shipping (${selected?.label ?? "—"})`} value={selected?.costCents ?? 0} />
         <Separator className="my-2" />
         <div className="flex items-baseline justify-between text-base font-semibold">
           <span>Total</span>

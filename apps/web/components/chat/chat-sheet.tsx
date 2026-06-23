@@ -11,9 +11,7 @@ import {
 } from "@bookstore/ui";
 import { SparklesIcon } from "lucide-react";
 
-const ChatPanel = lazy(() =>
-  import("./chat-panel").then((m) => ({ default: m.ChatPanel })),
-);
+const ChatPanel = lazy(() => import("./chat-panel").then((m) => ({ default: m.ChatPanel })));
 
 const SESSION_KEY = "bookstore.eve.session";
 
@@ -56,9 +54,7 @@ export function ChatSheet({
           </span>
           <div className="flex-1">
             <SheetTitle className="text-base">Paige</SheetTitle>
-            <SheetDescription className="text-xs">
-              Your bookstore concierge
-            </SheetDescription>
+            <SheetDescription className="text-xs">Your bookstore concierge</SheetDescription>
           </div>
         </SheetHeader>
 

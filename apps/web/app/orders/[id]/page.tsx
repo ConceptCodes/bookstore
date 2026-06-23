@@ -1,11 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeftIcon,
-  CheckCircle2Icon,
-  MapPinIcon,
-  PackageIcon,
-} from "lucide-react";
+import { ArrowLeftIcon, CheckCircle2Icon, MapPinIcon, PackageIcon } from "lucide-react";
 import {
   Badge,
   Button,
@@ -22,11 +17,7 @@ import { CUSTOMER_USER_ID, getOrderDetail } from "@bookstore/db";
 
 export const dynamic = "force-dynamic";
 
-export default async function OrderDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const orderId = Number.parseInt(id, 10);
   if (!Number.isFinite(orderId) || orderId <= 0) notFound();
@@ -46,12 +37,8 @@ export default async function OrderDetailPage({
 
       <div className="flex flex-wrap items-center gap-3">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            Order #{order.id}
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Placed {formatDate(order.placedAt)}
-          </p>
+          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Order #{order.id}</h1>
+          <p className="text-sm text-muted-foreground">Placed {formatDate(order.placedAt)}</p>
         </div>
         <StatusBadge status={order.status} kind="order" className="ml-auto" />
       </div>
@@ -95,9 +82,7 @@ export default async function OrderDetailPage({
                     >
                       {item.title}
                     </Link>
-                    <p className="truncate text-xs text-muted-foreground">
-                      {item.author}
-                    </p>
+                    <p className="truncate text-xs text-muted-foreground">{item.author}</p>
                     <p className="text-xs text-muted-foreground">
                       Qty {item.quantity} · {formatCurrency(item.unitPriceCents)} each
                     </p>
@@ -115,26 +100,21 @@ export default async function OrderDetailPage({
               <div className="flex items-baseline justify-between">
                 <span className="text-muted-foreground">Subtotal</span>
                 <span className="tabular-nums">
-                  {formatCurrency(
-                    items.reduce((s, i) => s + i.lineTotalCents, 0),
-                  )}
+                  {formatCurrency(items.reduce((s, i) => s + i.lineTotalCents, 0))}
                 </span>
               </div>
               <div className="flex items-baseline justify-between">
                 <span className="text-muted-foreground">Shipping</span>
                 <span className="tabular-nums">
                   {formatCurrency(
-                    order.totalCents -
-                      items.reduce((s, i) => s + i.lineTotalCents, 0),
+                    order.totalCents - items.reduce((s, i) => s + i.lineTotalCents, 0),
                   )}
                 </span>
               </div>
               <Separator className="my-2" />
               <div className="flex items-baseline justify-between text-base font-semibold">
                 <span>Total</span>
-                <span className="tabular-nums">
-                  {formatCurrency(order.totalCents)}
-                </span>
+                <span className="tabular-nums">{formatCurrency(order.totalCents)}</span>
               </div>
             </div>
           </CardContent>
@@ -160,7 +140,10 @@ export default async function OrderDetailPage({
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm">
-              <StatusRow label="Status" value={<StatusBadge status={order.status} kind="order" />} />
+              <StatusRow
+                label="Status"
+                value={<StatusBadge status={order.status} kind="order" />}
+              />
               <StatusRow label="Total" value={formatCurrency(order.totalCents)} />
               <StatusRow label="Placed" value={formatDate(order.placedAt)} />
               <div className="flex items-center justify-between gap-2">
@@ -181,13 +164,7 @@ export default async function OrderDetailPage({
   );
 }
 
-function StatusRow({
-  label,
-  value,
-}: {
-  label: string;
-  value: React.ReactNode;
-}) {
+function StatusRow({ label, value }: { label: string; value: React.ReactNode }) {
   return (
     <div className="flex items-center justify-between gap-2">
       <span className="text-muted-foreground">{label}</span>

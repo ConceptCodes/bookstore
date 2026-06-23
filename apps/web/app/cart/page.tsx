@@ -10,11 +10,7 @@ import {
   Separator,
   formatCurrency,
 } from "@bookstore/ui";
-import {
-  CUSTOMER_USER_ID,
-  SHIPPING_OPTIONS,
-  getCart,
-} from "@bookstore/db";
+import { CUSTOMER_USER_ID, SHIPPING_OPTIONS, getCart } from "@bookstore/db";
 import { CartLineRow } from "./cart-line-row";
 import { CheckoutForm } from "./checkout-form";
 
@@ -34,9 +30,7 @@ export default async function CartPage() {
       </Button>
 
       <div className="space-y-1">
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-          Your cart
-        </h1>
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Your cart</h1>
         <p className="text-sm text-muted-foreground">
           {empty
             ? "Nothing here yet."
@@ -81,10 +75,7 @@ export default async function CartPage() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <CheckoutForm
-                subtotalCents={cart.subtotalCents}
-                options={SHIPPING_OPTIONS}
-              />
+              <CheckoutForm subtotalCents={cart.subtotalCents} options={SHIPPING_OPTIONS} />
             </CardContent>
           </Card>
         </div>

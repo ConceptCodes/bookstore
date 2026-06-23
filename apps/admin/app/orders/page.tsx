@@ -32,13 +32,10 @@ export default async function OrdersPage({
   searchParams: Promise<{ status?: string }>;
 }) {
   const { status } = await searchParams;
-  const statusFilter =
-    status && status !== "all" ? (status as OrderStatus) : undefined;
+  const statusFilter = status && status !== "all" ? (status as OrderStatus) : undefined;
 
   const allOrders = listAllOrders();
-  const orders = statusFilter
-    ? allOrders.filter((o) => o.status === statusFilter)
-    : allOrders;
+  const orders = statusFilter ? allOrders.filter((o) => o.status === statusFilter) : allOrders;
 
   return (
     <>
@@ -103,9 +100,7 @@ export default async function OrdersPage({
                     {formatDate(order.placedAt)}
                   </TableCell>
                   <TableCell className="hidden lg:table-cell text-xs text-muted-foreground">
-                    <span className="line-clamp-1 max-w-[200px]">
-                      {order.shippingAddress}
-                    </span>
+                    <span className="line-clamp-1 max-w-[200px]">{order.shippingAddress}</span>
                   </TableCell>
                   <TableCell className="text-right font-medium tabular-nums">
                     {formatCurrency(order.totalCents)}

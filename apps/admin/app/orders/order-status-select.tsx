@@ -1,26 +1,14 @@
 "use client";
 
 import { useTransition } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@bookstore/ui";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@bookstore/ui";
 import { LoaderIcon } from "lucide-react";
 import { updateOrderStatusAction } from "@/app/actions";
 import type { OrderStatus } from "@bookstore/db";
 
 const STATUSES: OrderStatus[] = ["pending", "paid", "shipped", "cancelled"];
 
-export function OrderStatusSelect({
-  orderId,
-  status,
-}: {
-  orderId: number;
-  status: OrderStatus;
-}) {
+export function OrderStatusSelect({ orderId, status }: { orderId: number; status: OrderStatus }) {
   const [pending, startTransition] = useTransition();
 
   return (

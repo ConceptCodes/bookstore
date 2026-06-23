@@ -39,10 +39,7 @@ export function SiteHeader({ cartItemCount }: { cartItemCount: number }) {
 
         <nav className="flex items-center gap-1 text-sm">
           {NAV_LINKS.map((link) => {
-            const active =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.href);
+            const active = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
             return (
               <Link
                 key={link.href}

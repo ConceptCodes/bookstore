@@ -2,25 +2,11 @@
 
 import { useTransition } from "react";
 import { Button } from "@bookstore/ui";
-import {
-  CheckIcon,
-  LoaderIcon,
-  MessageSquareReplyIcon,
-  XCircleIcon,
-} from "lucide-react";
-import {
-  closeTicketAction,
-  respondToTicketAction,
-} from "@/app/actions";
+import { CheckIcon, LoaderIcon, MessageSquareReplyIcon, XCircleIcon } from "lucide-react";
+import { closeTicketAction, respondToTicketAction } from "@/app/actions";
 import type { TicketStatus } from "@bookstore/db";
 
-export function TicketActions({
-  ticketId,
-  status,
-}: {
-  ticketId: number;
-  status: TicketStatus;
-}) {
+export function TicketActions({ ticketId, status }: { ticketId: number; status: TicketStatus }) {
   const [pending1, startTransition1] = useTransition();
   const [pending2, startTransition2] = useTransition();
 

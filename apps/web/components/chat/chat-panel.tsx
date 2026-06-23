@@ -2,11 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { useEveAgent } from "eve/react";
-import {
-  Button,
-  Conversation,
-  Textarea,
-} from "@bookstore/ui";
+import { Button, Conversation, Textarea } from "@bookstore/ui";
 import { ArrowUpIcon, SparklesIcon, StopCircleIcon } from "lucide-react";
 import { MessageList } from "./message-list";
 import { ComposerSuggestions } from "./composer-suggestions";
@@ -40,11 +36,7 @@ export function ChatPanel({
   const sentRef = useRef<string | null>(null);
 
   useEffect(() => {
-    if (
-      pendingMessage &&
-      sentRef.current !== pendingMessage &&
-      agent.status === "ready"
-    ) {
+    if (pendingMessage && sentRef.current !== pendingMessage && agent.status === "ready") {
       sentRef.current = pendingMessage;
       void agent.send({ message: pendingMessage });
       onConsumePending?.();
@@ -76,17 +68,10 @@ export function ChatPanel({
       />
 
       {!hasMessages && (
-        <ComposerSuggestions
-          prompts={QUICK_PROMPTS}
-          disabled={isBusy}
-          onPick={submit}
-        />
+        <ComposerSuggestions prompts={QUICK_PROMPTS} disabled={isBusy} onPick={submit} />
       )}
 
-      <form
-        onSubmit={onSubmit}
-        className="flex items-end gap-2 border-t bg-background p-3"
-      >
+      <form onSubmit={onSubmit} className="flex items-end gap-2 border-t bg-background p-3">
         <Textarea
           name="message"
           value={value}
@@ -113,12 +98,7 @@ export function ChatPanel({
             <StopCircleIcon className="size-4" />
           </Button>
         ) : (
-          <Button
-            type="submit"
-            size="icon"
-            disabled={!value.trim()}
-            aria-label="Send"
-          >
+          <Button type="submit" size="icon" disabled={!value.trim()} aria-label="Send">
             <ArrowUpIcon className="size-4" />
           </Button>
         )}

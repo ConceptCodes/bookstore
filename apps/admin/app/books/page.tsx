@@ -33,9 +33,8 @@ export default async function BooksPage({
 
   const genres = listGenres();
   const allBooks = listAllBooks();
-  const filtered = query || genreFilter
-    ? searchBooks({ query, genre: genreFilter, limit: 200 })
-    : allBooks;
+  const filtered =
+    query || genreFilter ? searchBooks({ query, genre: genreFilter, limit: 200 }) : allBooks;
 
   return (
     <>
@@ -111,9 +110,7 @@ export default async function BooksPage({
                       >
                         {book.title}
                       </Link>
-                      <span className="text-xs text-muted-foreground">
-                        {book.author}
-                      </span>
+                      <span className="text-xs text-muted-foreground">{book.author}</span>
                     </div>
                   </TableCell>
                   <TableCell className="hidden md:table-cell">

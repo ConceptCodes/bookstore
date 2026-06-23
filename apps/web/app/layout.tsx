@@ -23,19 +23,13 @@ export const metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
   const cart = getCart(CUSTOMER_USER_ID);
 
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-background text-foreground antialiased">
-        <StorefrontShell cartItemCount={cart.itemCount}>
-          {children}
-        </StorefrontShell>
+        <StorefrontShell cartItemCount={cart.itemCount}>{children}</StorefrontShell>
       </body>
     </html>
   );

@@ -20,7 +20,7 @@ const STATE_LABEL: Record<string, string> = {
 
 export function ToolPartBadge({ part }: { part: ToolPartLike }) {
   const toolName = part.toolName ?? "tool";
-  const state = part.state ? STATE_LABEL[part.state] ?? part.state : "called";
+  const state = part.state ? (STATE_LABEL[part.state] ?? part.state) : "called";
   return (
     <Badge variant="outline" className="gap-1.5 py-1 text-xs font-normal">
       <WrenchIcon className="size-3 text-muted-foreground" />

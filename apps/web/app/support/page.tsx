@@ -1,8 +1,4 @@
-import {
-  HelpCircleIcon,
-  LifeBuoyIcon,
-  MessageSquareIcon,
-} from "lucide-react";
+import { HelpCircleIcon, LifeBuoyIcon, MessageSquareIcon } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -16,12 +12,7 @@ import {
   StatusBadge,
   formatRelativeTime,
 } from "@bookstore/ui";
-import {
-  CUSTOMER_USER_ID,
-  getUserTickets,
-  listFaqCategories,
-  searchFaq,
-} from "@bookstore/db";
+import { CUSTOMER_USER_ID, getUserTickets, listFaqCategories, searchFaq } from "@bookstore/db";
 import { TicketForm } from "./ticket-form";
 import { ChatTriggerButton } from "@/components/chat-trigger-button";
 
@@ -38,9 +29,7 @@ export default async function SupportPage() {
   return (
     <div className="space-y-8">
       <div className="space-y-1">
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-          Support
-        </h1>
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Support</h1>
         <p className="text-sm text-muted-foreground">
           Quick answers, ticket history, and Paige ready to help.
         </p>
@@ -49,11 +38,7 @@ export default async function SupportPage() {
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         <div className="space-y-4">
           <section className="space-y-3">
-            <SectionHeader
-              icon={HelpCircleIcon}
-              eyebrow="FAQ"
-              title="Frequently asked questions"
-            />
+            <SectionHeader icon={HelpCircleIcon} eyebrow="FAQ" title="Frequently asked questions" />
             <div className="space-y-4">
               {faqByCategory.map(({ category, entries }) =>
                 entries.length === 0 ? null : (
@@ -140,8 +125,8 @@ export default async function SupportPage() {
             <CardContent className="space-y-3 p-4">
               <p className="text-sm font-medium">Prefer to chat?</p>
               <p className="text-xs text-muted-foreground">
-                Paige can answer questions, look up orders, and open a ticket for you
-                inside the chat.
+                Paige can answer questions, look up orders, and open a ticket for you inside the
+                chat.
               </p>
               <ChatTriggerButton />
             </CardContent>

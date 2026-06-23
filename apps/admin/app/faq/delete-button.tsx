@@ -37,8 +37,8 @@ export function DeleteFaqButton({ faq }: { faq: Faq }) {
         <AlertDialogHeader>
           <AlertDialogTitle>Delete this FAQ entry?</AlertDialogTitle>
           <AlertDialogDescription>
-            <span className="text-foreground">&ldquo;{faq.question}&rdquo;</span>{" "}
-            will be removed from the storefront support page.
+            <span className="text-foreground">&ldquo;{faq.question}&rdquo;</span> will be removed
+            from the storefront support page.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

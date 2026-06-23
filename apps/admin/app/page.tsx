@@ -17,11 +17,7 @@ import {
   formatCurrency,
   formatDate,
 } from "@bookstore/ui";
-import {
-  getOverviewMetrics,
-  listAllBooks,
-  listAllOrders,
-} from "@bookstore/db";
+import { getOverviewMetrics, listAllBooks, listAllOrders } from "@bookstore/db";
 import { AdminPageHeader } from "@/components/admin-page-header";
 
 export const dynamic = "force-dynamic";
@@ -36,10 +32,7 @@ export default async function AdminOverviewPage() {
 
   return (
     <>
-      <AdminPageHeader
-        title="Overview"
-        description="Today at the bookstore."
-      />
+      <AdminPageHeader title="Overview" description="Today at the bookstore." />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Stat
@@ -100,9 +93,7 @@ export default async function AdminOverviewPage() {
                       >
                         Order #{order.id}
                       </Link>
-                      <p className="text-xs text-muted-foreground">
-                        {formatDate(order.placedAt)}
-                      </p>
+                      <p className="text-xs text-muted-foreground">{formatDate(order.placedAt)}</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <StatusBadge status={order.status} kind="order" />
@@ -145,12 +136,8 @@ export default async function AdminOverviewPage() {
                     className="flex items-center justify-between gap-3 py-2.5 first:pt-0 last:pb-0"
                   >
                     <div className="min-w-0">
-                      <p className="truncate text-sm font-medium">
-                        {book.title}
-                      </p>
-                      <p className="truncate text-xs text-muted-foreground">
-                        {book.author}
-                      </p>
+                      <p className="truncate text-sm font-medium">{book.title}</p>
+                      <p className="truncate text-xs text-muted-foreground">{book.author}</p>
                     </div>
                     <span
                       className={

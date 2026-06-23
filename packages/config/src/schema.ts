@@ -6,14 +6,9 @@ const here = dirname(fileURLToPath(import.meta.url));
 const DEFAULT_DB_PATH = resolve(here, "..", "..", "..", ".data", "bookstore.db");
 
 export const envSchema = z.object({
-  NODE_ENV: z
-    .enum(["development", "test", "production"])
-    .default("development"),
+  NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
 
-  BOOKSTORE_DB_PATH: z
-    .string()
-    .min(1)
-    .default(DEFAULT_DB_PATH),
+  BOOKSTORE_DB_PATH: z.string().min(1).default(DEFAULT_DB_PATH),
 
   AI_GATEWAY_API_KEY: z.string().optional(),
 

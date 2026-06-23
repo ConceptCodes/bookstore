@@ -2,11 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import type { EveMessage } from "eve/react";
-import {
-  Message,
-  MessageContent,
-  Streamdown,
-} from "@bookstore/ui";
+import { Message, MessageContent, Streamdown } from "@bookstore/ui";
 import { SparklesIcon } from "lucide-react";
 import { ToolCard } from "./tool-cards";
 
@@ -38,8 +34,8 @@ export function MessageList({
         <div className="space-y-1">
           <p className="text-sm font-medium">Hi, I&apos;m Paige.</p>
           <p className="mx-auto max-w-xs text-sm text-muted-foreground">
-            Your bookstore concierge. Ask me for recommendations, cart help,
-            order status, or anything else.
+            Your bookstore concierge. Ask me for recommendations, cart help, order status, or
+            anything else.
           </p>
         </div>
       </div>
@@ -106,13 +102,7 @@ function MessageParts({
         if (type === "reasoning") return null;
 
         if (typeof type === "string" && type.includes("tool")) {
-          return (
-            <ToolCard
-              key={key}
-              part={part as never}
-              onRespond={onRespond}
-            />
-          );
+          return <ToolCard key={key} part={part as never} onRespond={onRespond} />;
         }
 
         return null;

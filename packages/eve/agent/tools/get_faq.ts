@@ -14,9 +14,7 @@ export default defineTool({
     category: z
       .string()
       .optional()
-      .describe(
-        "Filter to a category: 'Shipping', 'Returns', 'Payments', or 'Account'.",
-      ),
+      .describe("Filter to a category: 'Shipping', 'Returns', 'Payments', or 'Account'."),
   }),
   async execute({ query, category }) {
     return searchFaq({ query, category });

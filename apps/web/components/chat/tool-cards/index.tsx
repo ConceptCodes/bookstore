@@ -66,7 +66,11 @@ export function ToolCard({
   if (state === "output-error") {
     const message =
       typeof part.output === "object" && part.output !== null
-        ? String((part.output as { errorText?: string; message?: string }).errorText ?? (part.output as { message?: string }).message ?? "")
+        ? String(
+            (part.output as { errorText?: string; message?: string }).errorText ??
+              (part.output as { message?: string }).message ??
+              "",
+          )
         : undefined;
     return <ErrorCard toolName={part.toolName} message={message} />;
   }

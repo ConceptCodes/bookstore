@@ -1,7 +1,6 @@
 export const CUSTOMER_USER_ID = "user_1";
 
-export const CUSTOMER_SHIPPING_ADDRESS =
-  "123 Binary St, Brooklyn, NY 11201";
+export const CUSTOMER_SHIPPING_ADDRESS = "123 Binary St, Brooklyn, NY 11201";
 
 export interface ShippingOption {
   id: string;

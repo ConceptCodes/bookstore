@@ -1,10 +1,6 @@
 import { HelpCircleIcon } from "lucide-react";
 import { CardShell } from "./card-shell";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@bookstore/ui";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@bookstore/ui";
 import type { Faq } from "@bookstore/db";
 
 export function FaqCard({ output }: { output: Faq[] }) {

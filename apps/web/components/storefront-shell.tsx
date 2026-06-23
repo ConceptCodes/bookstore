@@ -48,9 +48,7 @@ export function StorefrontShell({
   return (
     <ChatContext.Provider value={api}>
       <SiteHeader cartItemCount={cartItemCount} />
-      <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        {children}
-      </main>
+      <main className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8">{children}</main>
       <ChatSheet
         open={chatOpen}
         onOpenChange={setChatOpen}

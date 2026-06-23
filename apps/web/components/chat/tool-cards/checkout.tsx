@@ -1,12 +1,7 @@
 import Link from "next/link";
 import { CheckCircle2Icon } from "lucide-react";
 import { CardShell } from "./card-shell";
-import {
-  Separator,
-  StatusBadge,
-  formatCurrency,
-  formatDate,
-} from "@bookstore/ui";
+import { Separator, StatusBadge, formatCurrency, formatDate } from "@bookstore/ui";
 import type { OrderDetail } from "@bookstore/db";
 
 export function CheckoutCard({ output }: { output: OrderDetail }) {
@@ -36,13 +31,9 @@ export function CheckoutCard({ output }: { output: OrderDetail }) {
           >
             <div className="min-w-0">
               <p className="truncate text-xs font-medium">{item.title}</p>
-              <p className="text-[10px] text-muted-foreground">
-                qty {item.quantity}
-              </p>
+              <p className="text-[10px] text-muted-foreground">qty {item.quantity}</p>
             </div>
-            <span className="text-xs tabular-nums">
-              {formatCurrency(item.lineTotalCents)}
-            </span>
+            <span className="text-xs tabular-nums">{formatCurrency(item.lineTotalCents)}</span>
           </li>
         ))}
       </ul>
@@ -50,17 +41,13 @@ export function CheckoutCard({ output }: { output: OrderDetail }) {
       <Separator className="my-2" />
       <div className="flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Total</span>
-        <span className="font-semibold tabular-nums">
-          {formatCurrency(order.totalCents)}
-        </span>
+        <span className="font-semibold tabular-nums">{formatCurrency(order.totalCents)}</span>
       </div>
       <div className="mt-2 flex items-center justify-between text-xs">
         <span className="text-muted-foreground">Status</span>
         <StatusBadge status={order.status} kind="order" />
       </div>
-      <p className="mt-2 text-[10px] text-muted-foreground">
-        Placed {formatDate(order.placedAt)}
-      </p>
+      <p className="mt-2 text-[10px] text-muted-foreground">Placed {formatDate(order.placedAt)}</p>
     </CardShell>
   );
 }

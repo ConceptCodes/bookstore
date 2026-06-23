@@ -37,10 +37,7 @@ export async function clearCartAction() {
   revalidate();
 }
 
-export async function createSupportTicketAction(
-  subject: string,
-  body: string,
-) {
+export async function createSupportTicketAction(subject: string, body: string) {
   const ticket = createSupportTicket(CUSTOMER_USER_ID, subject, body);
   revalidate();
   return ticket;

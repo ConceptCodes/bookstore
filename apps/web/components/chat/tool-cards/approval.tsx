@@ -13,9 +13,7 @@ export function ApprovalCard({
   part: ToolPartLike;
   onRespond?: (requestId: string, optionId: string) => void;
 }) {
-  const request = part.toolMetadata?.eve?.inputRequest as
-    | InputRequest
-    | undefined;
+  const request = part.toolMetadata?.eve?.inputRequest as InputRequest | undefined;
   const [responded, setResponded] = useState<string | null>(null);
 
   if (!request) return null;
@@ -44,9 +42,7 @@ export function ApprovalCard({
         tone={isApproved ? "success" : "danger"}
       >
         <p className="text-sm">
-          {isApproved
-            ? "Approved — placing your order now."
-            : "Declined — your cart is unchanged."}
+          {isApproved ? "Approved — placing your order now." : "Declined — your cart is unchanged."}
         </p>
       </CardShell>
     );
@@ -54,12 +50,8 @@ export function ApprovalCard({
 
   return (
     <CardShell icon={ShieldCheckIcon} title="Approval needed" tone="warning">
-      {req.prompt && (
-        <p className="mb-3 text-sm font-medium">{req.prompt}</p>
-      )}
-      {req.description && (
-        <p className="mb-3 text-xs text-muted-foreground">{req.description}</p>
-      )}
+      {req.prompt && <p className="mb-3 text-sm font-medium">{req.prompt}</p>}
+      {req.description && <p className="mb-3 text-xs text-muted-foreground">{req.description}</p>}
       <div className="flex gap-2">
         {approve && (
           <Button

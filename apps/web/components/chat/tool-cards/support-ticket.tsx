@@ -41,9 +41,7 @@ export function SupportTicketCard({
           </span>
         </div>
         <p className="text-sm font-medium">{ticket.subject}</p>
-        <p className="line-clamp-3 text-xs text-muted-foreground">
-          {ticket.body}
-        </p>
+        <p className="line-clamp-3 text-xs text-muted-foreground">{ticket.body}</p>
         <Link
           href="/support"
           prefetch

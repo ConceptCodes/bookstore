@@ -5,13 +5,7 @@ import { Button } from "@bookstore/ui";
 import { MessageCircleIcon } from "lucide-react";
 import { useChatSheet } from "./storefront-shell";
 
-export function AskAboutBookButton({
-  bookTitle,
-  bookId,
-}: {
-  bookTitle: string;
-  bookId: number;
-}) {
+export function AskAboutBookButton({ bookTitle, bookId }: { bookTitle: string; bookId: number }) {
   const chat = useChatSheet();
   const [, startTransition] = useTransition();
 

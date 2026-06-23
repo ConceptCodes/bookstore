@@ -37,9 +37,9 @@ export function DeleteBookButton({ book }: { book: Book }) {
         <AlertDialogHeader>
           <AlertDialogTitle>Delete this book?</AlertDialogTitle>
           <AlertDialogDescription>
-            <span className="font-medium text-foreground">{book.title}</span> by{" "}
-            {book.author} will be permanently removed from the catalog. Any cart
-            items referencing it will also be removed.
+            <span className="font-medium text-foreground">{book.title}</span> by {book.author} will
+            be permanently removed from the catalog. Any cart items referencing it will also be
+            removed.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

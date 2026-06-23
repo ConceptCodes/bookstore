@@ -1,13 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  cn,
-} from "@bookstore/ui";
+import { Card, CardAction, CardContent, CardHeader, CardTitle, cn } from "@bookstore/ui";
 
 export type CardShellProps = {
   icon?: LucideIcon;
@@ -35,13 +28,7 @@ export function CardShell({
 }: CardShellProps) {
   const hasHeader = Boolean(Icon || title || action);
   return (
-    <Card
-      className={cn(
-        "gap-3 rounded-lg px-3 py-3 shadow-xs",
-        toneClasses[tone],
-        className,
-      )}
-    >
+    <Card className={cn("gap-3 rounded-lg px-3 py-3 shadow-xs", toneClasses[tone], className)}>
       {hasHeader && (
         <CardHeader className="gap-1 px-0 py-0">
           <CardTitle className="flex items-center gap-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground">
