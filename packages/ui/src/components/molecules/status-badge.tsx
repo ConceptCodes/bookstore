@@ -27,8 +27,7 @@ const TICKET_CLASSES: Record<TicketStatus, string> = {
   open: "border-blue-300/60 bg-blue-100 text-blue-900 dark:border-blue-900/40 dark:bg-blue-950/50 dark:text-blue-200",
   answered:
     "border-emerald-300/60 bg-emerald-100 text-emerald-900 dark:border-emerald-900/40 dark:bg-emerald-950/50 dark:text-emerald-200",
-  closed:
-    "border-muted-foreground/20 bg-muted text-muted-foreground",
+  closed: "border-muted-foreground/20 bg-muted text-muted-foreground",
 };
 
 export function StatusBadge({

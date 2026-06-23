@@ -25,9 +25,7 @@ export function formatDateTime(date: Date | number | { getTime(): number }): str
   }).format(d);
 }
 
-export function formatRelativeTime(
-  date: Date | number | { getTime(): number },
-): string {
+export function formatRelativeTime(date: Date | number | { getTime(): number }): string {
   const d = toDate(date);
   const diff = d.getTime() - Date.now();
   const absDiff = Math.abs(diff);

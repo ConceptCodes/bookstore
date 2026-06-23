@@ -36,9 +36,7 @@ export function SectionHeading({
         <h2 className="font-display text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
           {title}
         </h2>
-        {description && (
-          <p className="text-sm text-muted-foreground">{description}</p>
-        )}
+        {description && <p className="text-sm text-muted-foreground">{description}</p>}
       </div>
       {action && <div className="ml-auto shrink-0">{action}</div>}
     </div>

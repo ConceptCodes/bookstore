@@ -30,10 +30,7 @@ const GENRE_CLASSES: Record<string, string> = {
 export function GenreBadge({ genre, variant = "outline", className }: GenreBadgeProps) {
   const tone = GENRE_CLASSES[genre];
   return (
-    <Badge
-      variant={variant}
-      className={cn("font-medium", tone, className)}
-    >
+    <Badge variant={variant} className={cn("font-medium", tone, className)}>
       {genre}
     </Badge>
   );

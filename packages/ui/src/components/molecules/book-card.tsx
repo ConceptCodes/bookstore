@@ -58,10 +58,16 @@ export function BookCard({ book, href, footer, className }: BookCardProps) {
           className="pointer-events-none absolute inset-y-0 right-0 w-[2px] bg-gradient-to-l from-white/25 to-transparent"
         />
         {/* inner frame */}
-        <span aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5"
+        />
         {outOfStock && (
           <div className="absolute inset-0 flex items-center justify-center bg-background/75 p-4 backdrop-blur-[1px]">
-            <Badge variant="outline" className="border-foreground/25 bg-background/95 text-foreground">
+            <Badge
+              variant="outline"
+              className="border-foreground/25 bg-background/95 text-foreground"
+            >
               Out of stock
             </Badge>
           </div>

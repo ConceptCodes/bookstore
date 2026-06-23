@@ -27,10 +27,7 @@ export function BookCover({ title, coverUrl, alt, className }: BookCoverProps) {
   if (!showImage) {
     return (
       <div
-        className={cn(
-          "relative flex h-full w-full items-end overflow-hidden p-3",
-          className,
-        )}
+        className={cn("relative flex h-full w-full items-end overflow-hidden p-3", className)}
         style={{
           background: `linear-gradient(135deg, hsl(${hue} 45% 22%), hsl(${(hue + 40) % 360} 50% 14%))`,
         }}

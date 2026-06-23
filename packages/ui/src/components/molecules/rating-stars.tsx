@@ -47,9 +47,7 @@ export function RatingStars({
         </div>
       </div>
       {showNumber && (
-        <span className="text-xs tabular-nums text-muted-foreground">
-          {rating.toFixed(1)}
-        </span>
+        <span className="text-xs tabular-nums text-muted-foreground">{rating.toFixed(1)}</span>
       )}
     </div>
   );

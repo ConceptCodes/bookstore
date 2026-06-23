@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@source "../";
+
 /*
  * Canonical warm literary palette (Tailwind v4).
  *
@@ -6,12 +9,6 @@
  * Borders are soft pencil lines, not harsh dividers.
  * Focus rings are leather amber — the only chromatic accent.
  * See .agents/ui.md for full design language.
- *
- * NOTE: apps/web and apps/admin inline this content directly into their
- * own globals.css. Cross-package `@import "@bookstore/ui/styles.css"`
- * fails under Bun's symlinked node_modules because Tailwind v4's PostCSS
- * plugin can't resolve `tailwindcss` from this location. Keep this file
- * in sync with apps/*/app/globals.css when changing tokens.
  */
 
 @custom-variant dark (&:is(.dark *));
@@ -20,18 +17,18 @@
   --radius: 0.625rem;
   --background: oklch(0.975 0.012 85);
   --foreground: oklch(0.18 0.025 55);
-  --card: oklch(0.985 0.010 80);
+  --card: oklch(0.985 0.01 80);
   --card-foreground: oklch(0.18 0.025 55);
   --popover: oklch(0.992 0.008 80);
   --popover-foreground: oklch(0.18 0.025 55);
-  --primary: oklch(0.22 0.030 55);
+  --primary: oklch(0.22 0.03 55);
   --primary-foreground: oklch(0.975 0.012 85);
   --secondary: oklch(0.93 0.015 80);
-  --secondary-foreground: oklch(0.22 0.030 55);
+  --secondary-foreground: oklch(0.22 0.03 55);
   --muted: oklch(0.93 0.015 80);
   --muted-foreground: oklch(0.52 0.025 60);
-  --accent: oklch(0.91 0.020 80);
-  --accent-foreground: oklch(0.22 0.030 55);
+  --accent: oklch(0.91 0.02 80);
+  --accent-foreground: oklch(0.22 0.03 55);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.88 0.018 80);
   --input: oklch(0.86 0.016 80);
@@ -41,31 +38,31 @@
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.970 0.013 83);
+  --sidebar: oklch(0.97 0.013 83);
   --sidebar-foreground: oklch(0.18 0.025 55);
-  --sidebar-primary: oklch(0.22 0.030 55);
+  --sidebar-primary: oklch(0.22 0.03 55);
   --sidebar-primary-foreground: oklch(0.975 0.012 85);
-  --sidebar-accent: oklch(0.91 0.020 80);
-  --sidebar-accent-foreground: oklch(0.22 0.030 55);
+  --sidebar-accent: oklch(0.91 0.02 80);
+  --sidebar-accent-foreground: oklch(0.22 0.03 55);
   --sidebar-border: oklch(0.88 0.018 80);
   --sidebar-ring: oklch(0.65 0.12 65);
 }
 
 .dark {
-  --background: oklch(0.16 0.020 55);
+  --background: oklch(0.16 0.02 55);
   --foreground: oklch(0.93 0.015 80);
-  --card: oklch(0.20 0.022 55);
+  --card: oklch(0.2 0.022 55);
   --card-foreground: oklch(0.93 0.015 80);
   --popover: oklch(0.24 0.024 55);
   --popover-foreground: oklch(0.93 0.015 80);
-  --primary: oklch(0.90 0.018 85);
+  --primary: oklch(0.9 0.018 85);
   --primary-foreground: oklch(0.18 0.025 55);
   --secondary: oklch(0.26 0.025 55);
-  --secondary-foreground: oklch(0.90 0.018 85);
+  --secondary-foreground: oklch(0.9 0.018 85);
   --muted: oklch(0.26 0.025 55);
   --muted-foreground: oklch(0.62 0.022 70);
   --accent: oklch(0.28 0.025 55);
-  --accent-foreground: oklch(0.90 0.018 85);
+  --accent-foreground: oklch(0.9 0.018 85);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 8%);
   --input: oklch(1 0 0 / 15%);
@@ -77,10 +74,10 @@
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: oklch(0.17 0.021 55);
   --sidebar-foreground: oklch(0.93 0.015 80);
-  --sidebar-primary: oklch(0.90 0.018 85);
+  --sidebar-primary: oklch(0.9 0.018 85);
   --sidebar-primary-foreground: oklch(0.18 0.025 55);
   --sidebar-accent: oklch(0.28 0.025 55);
-  --sidebar-accent-foreground: oklch(0.90 0.018 85);
+  --sidebar-accent-foreground: oklch(0.9 0.018 85);
   --sidebar-border: oklch(1 0 0 / 8%);
   --sidebar-ring: oklch(0.65 0.12 65);
 }
@@ -140,7 +137,10 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    font-feature-settings:
+      "kern" 1,
+      "liga" 1,
+      "calt" 1;
   }
 
   body {
@@ -155,7 +155,9 @@
     background-blend-mode: soft-light;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-display), ui-serif, Georgia, serif;
     font-optical-sizing: auto;
     text-wrap: balance;
@@ -168,6 +170,6 @@
   }
 
   :where(.dark) ::selection {
-    background-color: oklch(0.65 0.12 65 / 0.30);
+    background-color: oklch(0.65 0.12 65 / 0.3);
   }
 }

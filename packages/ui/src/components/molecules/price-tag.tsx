@@ -34,13 +34,7 @@ export function PriceTag({
           {formatCurrency(strikeThroughCents)}
         </span>
       )}
-      <span
-        className={cn(
-          "font-semibold tabular-nums",
-          sizeClasses[size],
-          className,
-        )}
-      >
+      <span className={cn("font-semibold tabular-nums", sizeClasses[size], className)}>
         {formatCurrency(priceCents)}
       </span>
     </span>

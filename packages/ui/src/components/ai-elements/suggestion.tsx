@@ -1,24 +1,15 @@
 "use client";
 
-import { Button } from "@bookstore/ui/components/ui/button";
-import {
-  ScrollArea,
-  ScrollBar,
-} from "@bookstore/ui/components/ui/scroll-area";
-import { cn } from "@bookstore/ui/lib/utils";
+import { Button } from "#ui/components/ui/button";
+import { ScrollArea, ScrollBar } from "#ui/components/ui/scroll-area";
+import { cn } from "#ui/lib/utils";
 import type { ComponentProps } from "react";
 
 export type SuggestionsProps = ComponentProps<typeof ScrollArea>;
 
-export const Suggestions = ({
-  className,
-  children,
-  ...props
-}: SuggestionsProps) => (
+export const Suggestions = ({ className, children, ...props }: SuggestionsProps) => (
   <ScrollArea className="w-full overflow-x-auto whitespace-nowrap" {...props}>
-    <div className={cn("flex w-max flex-nowrap items-center gap-2", className)}>
-      {children}
-    </div>
+    <div className={cn("flex w-max flex-nowrap items-center gap-2", className)}>{children}</div>
     <ScrollBar className="hidden" orientation="horizontal" />
   </ScrollArea>
 );
