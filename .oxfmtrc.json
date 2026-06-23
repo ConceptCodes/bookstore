@@ -1,0 +1,13 @@
+{
+  "ignorePatterns": [
+    ".next/**",
+    ".turbo/**",
+    ".output/**",
+    ".eve/**",
+    ".workflow-data/**",
+    ".data/**",
+    "dist/**",
+    "out/**",
+    "bun.lock"
+  ]
+}

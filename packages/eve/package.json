@@ -8,16 +8,17 @@
     "build": "eve build",
     "start": "eve start",
     "info": "eve info",
+    "lint": "oxlint agent --deny-warnings",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@bookstore/config": "workspace:*",
     "@bookstore/db": "workspace:*",
-    "ai": "7.0.0-beta.178",
-    "eve": "^0.12.0",
-    "zod": "^4.4.3"
+    "ai": "catalog:",
+    "eve": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "typescript": "^5.9.0"
+    "typescript": "catalog:"
   }
 }

@@ -11,11 +11,14 @@
     "./repo": "./src/repo.ts"
   },
   "scripts": {
+    "build": "tsc --noEmit",
     "generate": "drizzle-kit generate",
     "migrate": "drizzle-kit migrate",
     "push": "drizzle-kit push",
     "seed": "node src/seed.ts",
     "setup": "drizzle-kit push && node src/seed.ts",
+    "lint": "oxlint src --deny-warnings",
+    "test": "node --test src/repo.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -26,6 +29,6 @@
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "drizzle-kit": "^0.31.10",
-    "typescript": "^5.9.0"
+    "typescript": "catalog:"
   }
 }

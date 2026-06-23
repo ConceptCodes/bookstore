@@ -5,10 +5,13 @@ node_modules
 
 # build artifacts
 .next/
+.turbo/
+.output/
 dist/
 .eve/
 .workflow-data/
 out/
+.tmp/
 
 # database
 .data/

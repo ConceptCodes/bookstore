@@ -10,13 +10,15 @@
     "./schema": "./src/schema.ts"
   },
   "scripts": {
+    "build": "tsc --noEmit",
+    "lint": "oxlint src --deny-warnings",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "zod": "^4.4.3"
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "@types/node": "^22.10.0",
-    "typescript": "^5.9.0"
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
   }
 }

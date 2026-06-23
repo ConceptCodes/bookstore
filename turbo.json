@@ -1,0 +1,34 @@
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "ui": "stream",
+  "globalDependencies": ["tsconfig.base.json", ".env.example"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "env": [
+        "AI_GATEWAY_API_KEY",
+        "ANTHROPIC_API_KEY",
+        "VERCEL_OIDC_TOKEN",
+        "BOOKSTORE_DB_PATH",
+        "EVE_NEXT_PRODUCTION_PORT",
+        "EVE_NEXT_PRODUCTION_ORIGIN",
+        "NODE_ENV",
+        "PORT"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "outputs": []
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "outputs": []
+    },
+    "test": {
+      "dependsOn": ["^typecheck"]
+    }
+  }
+}
