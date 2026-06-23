@@ -13,8 +13,8 @@ export type BookGridProps = {
 };
 
 const colsClasses: Record<NonNullable<BookGridProps["cols"]>, string> = {
-  default: "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5",
-  compact: "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6",
+  default: "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6",
+  compact: "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7",
   wide: "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
 };
 
