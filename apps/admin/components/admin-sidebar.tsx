@@ -39,7 +39,7 @@ export function AdminSidebar({ cartItemCount }: { cartItemCount?: number }) {
           <BookOpenIcon className="size-4" />
         </span>
         <div className="leading-tight">
-          <p className="text-sm font-semibold">Bookstore</p>
+          <p className="font-display text-base font-semibold tracking-tight">Bookstore</p>
           <p className="text-[10px] uppercase tracking-wide text-muted-foreground">
             Admin
           </p>

@@ -1,6 +1,19 @@
 import type { ReactNode } from "react";
+import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { AdminSidebar } from "@/components/admin-sidebar";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata = {
   title: "Bookstore Admin",
@@ -11,7 +24,7 @@ export const dynamic = "force-dynamic";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="min-h-screen bg-background text-foreground antialiased">
         <div className="flex min-h-screen">
           <AdminSidebar />
