@@ -1,5 +1,11 @@
 /*
- * Canonical shadcn theme tokens (neutral palette, Tailwind v4).
+ * Canonical warm literary palette (Tailwind v4).
+ *
+ * Background is cream parchment, not a screen.
+ * Text is warm letterpress ink, not cold digital black.
+ * Borders are soft pencil lines, not harsh dividers.
+ * Focus rings are leather amber — the only chromatic accent.
+ * See .agents/ui.md for full design language.
  *
  * NOTE: apps/web and apps/admin inline this content directly into their
  * own globals.css. Cross-package `@import "@bookstore/ui/styles.css"`
@@ -12,71 +18,71 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: oklch(0.975 0.012 85);
+  --foreground: oklch(0.18 0.025 55);
+  --card: oklch(0.985 0.010 80);
+  --card-foreground: oklch(0.18 0.025 55);
+  --popover: oklch(0.992 0.008 80);
+  --popover-foreground: oklch(0.18 0.025 55);
+  --primary: oklch(0.22 0.030 55);
+  --primary-foreground: oklch(0.975 0.012 85);
+  --secondary: oklch(0.93 0.015 80);
+  --secondary-foreground: oklch(0.22 0.030 55);
+  --muted: oklch(0.93 0.015 80);
+  --muted-foreground: oklch(0.52 0.025 60);
+  --accent: oklch(0.91 0.020 80);
+  --accent-foreground: oklch(0.22 0.030 55);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: oklch(0.88 0.018 80);
+  --input: oklch(0.86 0.016 80);
+  --ring: oklch(0.65 0.12 65);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: oklch(0.970 0.013 83);
+  --sidebar-foreground: oklch(0.18 0.025 55);
+  --sidebar-primary: oklch(0.22 0.030 55);
+  --sidebar-primary-foreground: oklch(0.975 0.012 85);
+  --sidebar-accent: oklch(0.91 0.020 80);
+  --sidebar-accent-foreground: oklch(0.22 0.030 55);
+  --sidebar-border: oklch(0.88 0.018 80);
+  --sidebar-ring: oklch(0.65 0.12 65);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: oklch(0.16 0.020 55);
+  --foreground: oklch(0.93 0.015 80);
+  --card: oklch(0.20 0.022 55);
+  --card-foreground: oklch(0.93 0.015 80);
+  --popover: oklch(0.24 0.024 55);
+  --popover-foreground: oklch(0.93 0.015 80);
+  --primary: oklch(0.90 0.018 85);
+  --primary-foreground: oklch(0.18 0.025 55);
+  --secondary: oklch(0.26 0.025 55);
+  --secondary-foreground: oklch(0.90 0.018 85);
+  --muted: oklch(0.26 0.025 55);
+  --muted-foreground: oklch(0.62 0.022 70);
+  --accent: oklch(0.28 0.025 55);
+  --accent-foreground: oklch(0.90 0.018 85);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+  --border: oklch(1 0 0 / 8%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --ring: oklch(0.65 0.12 65);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --sidebar: oklch(0.17 0.021 55);
+  --sidebar-foreground: oklch(0.93 0.015 80);
+  --sidebar-primary: oklch(0.90 0.018 85);
+  --sidebar-primary-foreground: oklch(0.18 0.025 55);
+  --sidebar-accent: oklch(0.28 0.025 55);
+  --sidebar-accent-foreground: oklch(0.90 0.018 85);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.65 0.12 65);
 }
 
 @theme inline {
@@ -117,11 +123,51 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@utility font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+/* Paper grain — the page is paper, not a screen. A desaturated fractal-noise
+ * tile blended into the background colour. Faint enough to read as texture,
+ * not noise. See .agents/ui.md. */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+    background-size: 140px 140px;
+    background-blend-mode: multiply;
+  }
+
+  :where(.dark) body {
+    background-blend-mode: soft-light;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-optical-sizing: auto;
+    text-wrap: balance;
+    letter-spacing: -0.012em;
+  }
+
+  ::selection {
+    background-color: oklch(0.65 0.12 65 / 0.22);
+    color: var(--foreground);
+  }
+
+  :where(.dark) ::selection {
+    background-color: oklch(0.65 0.12 65 / 0.30);
   }
 }

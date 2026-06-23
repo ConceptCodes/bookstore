@@ -31,7 +31,13 @@ export function BookCard({ book, href, footer, className }: BookCardProps) {
   const outOfStock = book.stock <= 0;
 
   return (
-    <Card className={cn("group flex flex-col overflow-hidden p-0", className)}>
+    <Card
+      className={cn(
+        "group flex flex-col overflow-hidden p-0 transition-all duration-300",
+        "hover:-translate-y-0.5 hover:border-accent-foreground/25 hover:shadow-sm",
+        className,
+      )}
+    >
       <Link
         href={linkHref}
         className="relative block aspect-[2/3] overflow-hidden bg-muted"
@@ -40,21 +46,32 @@ export function BookCard({ book, href, footer, className }: BookCardProps) {
         <BookCover
           title={book.title}
           coverUrl={book.coverUrl}
-          className="transition-transform duration-300 group-hover:scale-[1.04]"
+          className="transition-transform duration-500 ease-out group-hover:scale-[1.03]"
         />
+        {/* physical book depth: spine shadow on the left, page-edge highlight on the right */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 left-0 w-[7%] min-w-[3px] bg-gradient-to-r from-black/22 to-transparent"
+        />
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 w-[2px] bg-gradient-to-l from-white/25 to-transparent"
+        />
+        {/* inner frame */}
+        <span aria-hidden className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/5" />
         {outOfStock && (
-          <div className="absolute inset-0 flex items-center justify-center bg-background/70 p-4 backdrop-blur-[1px]">
-            <Badge variant="outline" className="border-foreground/30 bg-background/90 text-foreground">
+          <div className="absolute inset-0 flex items-center justify-center bg-background/75 p-4 backdrop-blur-[1px]">
+            <Badge variant="outline" className="border-foreground/25 bg-background/95 text-foreground">
               Out of stock
             </Badge>
           </div>
         )}
       </Link>
 
-      <CardContent className="flex flex-1 flex-col gap-2 p-3">
-        <div className="space-y-1">
+      <CardContent className="flex flex-1 flex-col gap-2.5 p-3.5">
+        <div className="space-y-0.5">
           <Link href={linkHref} prefetch className="block">
-            <h3 className="line-clamp-2 text-sm font-semibold leading-tight hover:underline">
+            <h3 className="font-display line-clamp-2 text-[0.95rem] font-semibold leading-snug tracking-tight text-foreground transition-colors group-hover:text-foreground">
               {book.title}
             </h3>
           </Link>
@@ -66,7 +83,7 @@ export function BookCard({ book, href, footer, className }: BookCardProps) {
           <GenreBadge genre={book.genre} />
         </div>
 
-        <div className="mt-auto flex items-center justify-between gap-2 pt-2">
+        <div className="mt-auto flex items-center justify-between gap-2 border-t border-border/60 pt-2.5">
           <PriceTag priceCents={book.priceCents} size="sm" />
           {footer}
         </div>

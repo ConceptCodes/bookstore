@@ -2,6 +2,8 @@ export { cn } from "./lib/utils";
 export * from "./lib/format";
 export { Streamdown } from "streamdown";
 
+export * from "./components/molecules/ornament";
+export * from "./components/molecules/section-heading";
 export * from "./components/molecules/book-cover";
 export * from "./components/molecules/price-tag";
 export * from "./components/molecules/rating-stars";
