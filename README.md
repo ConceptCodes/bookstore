@@ -2,7 +2,7 @@
 
 A mock bookstore monorepo with a customer storefront, an admin dashboard, and **Paige** — an Eve agent concierge customers chat with to discover books, manage their cart, check out, and get support.
 
-Built with [**Eve**](https://vercel.com/eve) (Vercel's filesystem-first agent framework), [**Next.js 16**](https://nextjs.org) (App Router, Turbopack), [**Drizzle ORM**](https://orm.drizzle.team) on [**SQLite**](https://www.sqlite.org) ([`better-sqlite3`](https://github.com/WiseLibs/better-sqlite3)), [**shadcn/ui**](https://ui.shadcn.com) + [**AI Elements**](https://github.com/vercel/ai-elements), and [**Bun**](https://bun.sh) workspaces.
+Built with [**Eve**](https://vercel.com/eve) (Vercel's filesystem-first agent framework), [**Next.js 16**](https://nextjs.org) (App Router, Turbopack), [**Drizzle ORM**](https://orm.drizzle.team) on [**SQLite**](https://www.sqlite.org) ([`better-sqlite3`](https://github.com/WiseLibs/better-sqlite3)), [**shadcn/ui**](https://ui.shadcn.com) + [**AI Elements**](https://github.com/vercel/ai-elements), [**Bun**](https://bun.sh) workspaces, and [**Turborepo**](https://turborepo.com) task orchestration.
 
 ---
 
@@ -51,24 +51,27 @@ book-store/
     └── config/           @bookstore/config — Zod-validated env singleton
 ```
 
-All cross-package deps use `"workspace:*"`. Each package exports TypeScript source directly; both Next.js apps list workspace deps in `transpilePackages`.
+All cross-package deps use `"workspace:*"`, while shared third-party versions are managed by Bun's root catalog. Each package exports TypeScript source directly; both Next.js apps list workspace deps in `transpilePackages`.
 
 ---
 
 ## Scripts
 
-| Script | What it does |
-|---|---|
-| `bun run dev` | Boot storefront (`apps/web`) on port 3000, with Eve alongside |
-| `bun run dev:admin` | Boot admin dashboard on port 3001 |
-| `bun run dev:eve` | Boot just the Eve agent dev server (TUI) |
-| `bun run build` | Build every workspace |
-| `bun run typecheck` | Typecheck every workspace |
-| `bun run db:setup` | Push schema to SQLite + seed mock data |
-| `bun run db:push` | Just push schema (no seed) |
-| `bun run db:seed` | Just seed (assumes schema exists) |
-| `bun run db:generate` | Generate a Drizzle migration file |
-| `bun run db:migrate` | Apply Drizzle migrations |
+| Script                | What it does                                                  |
+| --------------------- | ------------------------------------------------------------- |
+| `bun run dev`         | Boot storefront (`apps/web`) on port 3000, with Eve alongside |
+| `bun run dev:admin`   | Boot admin dashboard on port 3001                             |
+| `bun run dev:eve`     | Boot just the Eve agent dev server (TUI)                      |
+| `bun run build`       | Build every workspace                                         |
+| `bun run typecheck`   | Typecheck every workspace                                     |
+| `bun run lint`        | Lint every workspace                                          |
+| `bun run test`        | Run workspace tests                                           |
+| `bun run check`       | Format check, lint, typecheck, test, and build                |
+| `bun run db:setup`    | Push schema to SQLite + seed mock data                        |
+| `bun run db:push`     | Just push schema (no seed)                                    |
+| `bun run db:seed`     | Just seed (assumes schema exists)                             |
+| `bun run db:generate` | Generate a Drizzle migration file                             |
+| `bun run db:migrate`  | Apply Drizzle migrations                                      |
 
 ---
 
@@ -76,16 +79,16 @@ All cross-package deps use `"workspace:*"`. Each package exports TypeScript sour
 
 Validated by `@bookstore/config` via Zod on first import. Missing/invalid values fail loudly with field-level errors.
 
-| Variable | Required | Default | Purpose |
-|---|---|---|---|
-| `AI_GATEWAY_API_KEY` | one of these three | — | Vercel AI Gateway (default model `anthropic/claude-sonnet-4.6` routes here) |
-| `ANTHROPIC_API_KEY` | (or) | — | Direct Anthropic provider fallback |
-| `VERCEL_OIDC_TOKEN` | (or) | — | Pull via `vercel link` instead |
-| `NODE_ENV` | no | `development` | `development` / `test` / `production` |
-| `BOOKSTORE_DB_PATH` | no | `<root>/.data/bookstore.db` | SQLite file location (absolute) |
-| `EVE_NEXT_PRODUCTION_PORT` | no | — | `withEve` prod build port override |
-| `EVE_NEXT_PRODUCTION_ORIGIN` | no | — | Cross-origin Eve service URL for non-Vercel hosts |
-| `PORT` | no | — | Generic serve port |
+| Variable                     | Required           | Default                     | Purpose                                                                     |
+| ---------------------------- | ------------------ | --------------------------- | --------------------------------------------------------------------------- |
+| `AI_GATEWAY_API_KEY`         | one of these three | —                           | Vercel AI Gateway (default model `anthropic/claude-sonnet-4.6` routes here) |
+| `ANTHROPIC_API_KEY`          | (or)               | —                           | Direct Anthropic provider fallback                                          |
+| `VERCEL_OIDC_TOKEN`          | (or)               | —                           | Pull via `vercel link` instead                                              |
+| `NODE_ENV`                   | no                 | `development`               | `development` / `test` / `production`                                       |
+| `BOOKSTORE_DB_PATH`          | no                 | `<root>/.data/bookstore.db` | SQLite file location (absolute)                                             |
+| `EVE_NEXT_PRODUCTION_PORT`   | no                 | —                           | `withEve` prod build port override                                          |
+| `EVE_NEXT_PRODUCTION_ORIGIN` | no                 | —                           | Cross-origin Eve service URL for non-Vercel hosts                           |
+| `PORT`                       | no                 | —                           | Generic serve port                                                          |
 
 `env.hasModelCredentials()`, `env.isDev`, `env.isProd`, `env.isTest`, and `requireEnv(key)` helpers are also exported from `@bookstore/config`.
 
@@ -134,7 +137,7 @@ SQLite via `better-sqlite3` + Drizzle ORM. DB lives at `<root>/.data/bookstore.d
 
 Repo functions in `packages/db/src/repo.ts` cover catalog/cart/account/checkout/support + admin CRUD + overview metrics. Notable: `getRecommendations` (genre-overlap scoring), `createOrder` (transactional with stock decrement).
 
-The seed script (`packages/db/src/seed.ts`) runs via **Node 26** (native TS strip) because Bun cannot load `better-sqlite3`'s native addon. The CLI/runtime in both Next.js apps and Eve's runtime is Node, where `better-sqlite3` loads fine.
+The seed script (`packages/db/src/seed.ts`) runs via **Node 24+** (native TS strip) because Bun cannot load `better-sqlite3`'s native addon. The CLI/runtime in both Next.js apps and Eve's runtime is Node, where `better-sqlite3` loads fine.
 
 ---
 
@@ -148,7 +151,7 @@ The seed script (`packages/db/src/seed.ts`) runs via **Node 26** (native TS stri
 - **Organisms** (`components/organisms/`): BookGrid (responsive grid with `cardFooter`/`getHref`/`emptyState` slots).
 - **Format utils** (`lib/format.ts`): `formatCurrency`, `formatDate`, `formatDateTime`, `formatRelativeTime`.
 
-Tailwind v4 tokens (neutral palette, dark-mode aware) are inlined per-app at `apps/*/app/globals.css`. The canonical source lives at `packages/ui/src/styles/globals.css` with a sync note — cross-package CSS `@import` fails under Bun's symlinked node_modules because Tailwind v4's PostCSS plugin can't resolve `tailwindcss` from that location.
+Tailwind v4 tokens (neutral palette, dark-mode aware), base styles, and shared-package source detection live in `packages/ui/src/styles/globals.css`. Each app imports the package stylesheet through `@bookstore/ui/styles.css`.
 
 `packages/ui` declares `next` as a peerDep so molecules can use `next/link`.
 
@@ -186,21 +189,21 @@ Sheet → lazy `ChatPanel` (mounted only when open) → `useEveAgent` from `eve/
 
 `components/chat/tool-cards/` registry maps each tool name → a renderer:
 
-| Card | Renders |
-|---|---|
-| `RunningCard` | Per-tool "Searching…" / "Loading cart…" labels |
-| `ErrorCard` | tone=danger, surfaces `output-error` / `output-denied` |
-| `ApprovalCard` | **HITL approve/deny** for `checkout` — reads `toolMetadata.eve.inputRequest`, calls `onRespond` → `agent.send({ inputResponses })`, local state prevents double-submit |
-| `SearchBooksCard` | Compact rows (cover + title + author + rating + price + Add btn) for `search_books` + `get_recommendations` |
-| `BookDetailsCard` | Large cover + full info + stock + ISBN |
-| `CartCard` | Shared across all 5 cart tools, per-tool title + line items + subtotal + "View cart" |
-| `AccountCard` | 2×2 stat grid (orders / spent / tickets / cart items) |
-| `OrderHistoryCard` | Last 5 orders + status badge + total |
-| `OrderDetailsCard` | Full detail with line items + total |
-| `ShippingOptionsCard` | Cost + ETA list |
-| `CheckoutCard` | tone=success, order id link, line items, total |
-| `FaqCard` | Collapsible Q/A via shadcn `Collapsible` |
-| `SupportTicketCard` | Status badge + relative time + "View in support" |
+| Card                  | Renders                                                                                                                                                                |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `RunningCard`         | Per-tool "Searching…" / "Loading cart…" labels                                                                                                                         |
+| `ErrorCard`           | tone=danger, surfaces `output-error` / `output-denied`                                                                                                                 |
+| `ApprovalCard`        | **HITL approve/deny** for `checkout` — reads `toolMetadata.eve.inputRequest`, calls `onRespond` → `agent.send({ inputResponses })`, local state prevents double-submit |
+| `SearchBooksCard`     | Compact rows (cover + title + author + rating + price + Add btn) for `search_books` + `get_recommendations`                                                            |
+| `BookDetailsCard`     | Large cover + full info + stock + ISBN                                                                                                                                 |
+| `CartCard`            | Shared across all 5 cart tools, per-tool title + line items + subtotal + "View cart"                                                                                   |
+| `AccountCard`         | 2×2 stat grid (orders / spent / tickets / cart items)                                                                                                                  |
+| `OrderHistoryCard`    | Last 5 orders + status badge + total                                                                                                                                   |
+| `OrderDetailsCard`    | Full detail with line items + total                                                                                                                                    |
+| `ShippingOptionsCard` | Cost + ETA list                                                                                                                                                        |
+| `CheckoutCard`        | tone=success, order id link, line items, total                                                                                                                         |
+| `FaqCard`             | Collapsible Q/A via shadcn `Collapsible`                                                                                                                               |
+| `SupportTicketCard`   | Status badge + relative time + "View in support"                                                                                                                       |
 
 `CardShell` (the wrapper) composes shadcn `Card` + `CardHeader` + `CardTitle` + `CardAction` + `CardContent` with tone variants (success/warning/danger) and tightened `p-3` spacing for the narrow chat sheet.
 
@@ -238,7 +241,7 @@ Reuses shared molecules from `@bookstore/ui` — **zero new atoms needed for adm
 
 ## Built with
 
-This project was built entirely with **Z.ai GLM-5.2**, with some help from **Claude Sonnet 4.6** on the UI design.
+This project was built entirely with **Z.ai GLM-5.2**, with some help from **Claude Sonnet 4.6** on the UI design. Code review and monorepo hardening were handled by **OpenAI GPT-5.5 Medium**.
 
 ---
 
