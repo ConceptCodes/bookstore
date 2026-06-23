@@ -9,7 +9,7 @@ export function ChatTriggerButton() {
   return (
     <Button onClick={() => chat.open()} className="w-full">
       <MessageSquareIcon className="size-4" />
-      Ask Page
+      Ask Paige
     </Button>
   );
 }

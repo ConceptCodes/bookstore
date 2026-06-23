@@ -26,7 +26,7 @@ export function AskAboutBookButton({
       }
     >
       <MessageCircleIcon className="size-4" />
-      Ask Page about this book
+      Ask Paige about this book
     </Button>
   );
 }

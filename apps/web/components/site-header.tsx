@@ -75,7 +75,7 @@ export function SiteHeader({ cartItemCount }: { cartItemCount: number }) {
             )}
           >
             <MessageCircleIcon className="size-4 text-[oklch(0.55_0.13_65)]" />
-            <span className="hidden sm:inline">Ask Page</span>
+            <span className="hidden sm:inline">Ask Paige</span>
           </button>
           <Link
             href="/cart"

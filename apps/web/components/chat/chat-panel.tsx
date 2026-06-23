@@ -97,7 +97,7 @@ export function ChatPanel({
               submit(value);
             }
           }}
-          placeholder={isBusy ? "Page is responding…" : "Ask Page anything…"}
+          placeholder={isBusy ? "Paige is responding…" : "Ask Paige anything…"}
           rows={1}
           disabled={isBusy}
           className="block max-h-40 min-h-[2.5rem] flex-1 resize-none"

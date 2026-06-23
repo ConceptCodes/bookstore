@@ -55,7 +55,7 @@ export function ChatSheet({
             <SparklesIcon className="size-4" />
           </span>
           <div className="flex-1">
-            <SheetTitle className="text-base">Page</SheetTitle>
+            <SheetTitle className="text-base">Paige</SheetTitle>
             <SheetDescription className="text-xs">
               Your bookstore concierge
             </SheetDescription>

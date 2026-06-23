@@ -1,6 +1,6 @@
 # Bookstore
 
-A mock bookstore monorepo with a customer storefront, an admin dashboard, and **Page** — an Eve agent concierge customers chat with to discover books, manage their cart, check out, and get support.
+A mock bookstore monorepo with a customer storefront, an admin dashboard, and **Paige** — an Eve agent concierge customers chat with to discover books, manage their cart, check out, and get support.
 
 Built with [**Eve**](https://vercel.com/eve) (Vercel's filesystem-first agent framework), [**Next.js 16**](https://nextjs.org) (App Router, Turbopack), [**Drizzle ORM**](https://orm.drizzle.team) on [**SQLite**](https://www.sqlite.org) ([`better-sqlite3`](https://github.com/WiseLibs/better-sqlite3)), [**shadcn/ui**](https://ui.shadcn.com) + [**AI Elements**](https://github.com/vercel/ai-elements), and [**Bun**](https://bun.sh) workspaces.
 
@@ -45,7 +45,7 @@ book-store/
 │   ├── web/              @bookstore/web    — storefront + chat sheet
 │   └── admin/            @bookstore/admin  — CRUD dashboard (port 3001)
 └── packages/
-    ├── eve/              @bookstore/eve    — Page the agent (Eve project root)
+    ├── eve/              @bookstore/eve    — Paige the agent (Eve project root)
     ├── db/               @bookstore/db     — Drizzle schema + repo + seed
     ├── ui/               @bookstore/ui     — shadcn primitives + AI Elements + molecules
     └── config/           @bookstore/config — Zod-validated env singleton
@@ -91,11 +91,11 @@ Validated by `@bookstore/config` via Zod on first import. Missing/invalid values
 
 ---
 
-## The agent: Page
+## The agent: Paige
 
 `packages/eve/agent/` is the Eve project root.
 
-- **Persona** in `instructions.md` — Page the bookseller (warm, concise, uses tools, treats Ada as the implicit customer, prices in cents internally / dollars to user).
+- **Persona** in `instructions.md` — Paige the bookseller (warm, concise, uses tools, treats Ada as the implicit customer, prices in cents internally / dollars to user).
 - **Model** in `agent.ts` — `anthropic/claude-sonnet-4.6` via AI Gateway. `@bookstore/db` and `better-sqlite3` are externalized from Eve's bundle (native addon + workspace package).
 - **Channel** in `channels/eve.ts` — `auth: [none()]` for the public mock demo. Swap for `localDev()` + a real auth chain before production.
 - **16 tools** in `tools/` (filename = model-facing name):
@@ -159,12 +159,12 @@ Tailwind v4 tokens (neutral palette, dark-mode aware) are inlined per-app at `ap
 Atomic-design templates and pages.
 
 - **Layout** (`app/layout.tsx`): server, fetches cart count from `@bookstore/db`, wraps in `<StorefrontShell>`.
-- **Shell** (`components/storefront-shell.tsx`): client `ChatContext` provider holding sheet-open state + `pendingMessage` for CTAs that pre-seed the chat (e.g. "Ask Page about this book").
-- **Header** (`components/site-header.tsx`): logo, nav (Books/Orders/Support), **Ask Page** trigger, cart count badge.
-- **Pages**:
+- **Shell** (`components/storefront-shell.tsx`): client `ChatContext` provider holding sheet-open state + `pendingMessage` for CTAs that pre-seed the chat (e.g. "Ask Paige about this book").
+- **Header** (`components/site-header.tsx`): logo, nav (Books/Orders/Support), **Ask Paige** trigger, cart count badge.
+- **Paiges**:
   - `/` — hero (welcome + search), recommendations (genre-overlap), featured (top-rated), browse-all with genre chips
-  - `/book/[id]` — 2-col layout (large cover + info), stock hints, prose description, details card, **Add to cart** + **Ask Page about this book** CTAs, "More in \<genre\>" related grid; `notFound()` on unknown id
-  - `/cart` — 2-col (items + sticky checkout); per-line qty stepper + remove via `useTransition`; shipping radio cards; totals breakdown; **Place order** → `checkoutAction` → redirect to `/orders/[id]`; "or ask Page to help" alt path
+  - `/book/[id]` — 2-col layout (large cover + info), stock hints, prose description, details card, **Add to cart** + **Ask Paige about this book** CTAs, "More in \<genre\>" related grid; `notFound()` on unknown id
+  - `/cart` — 2-col (items + sticky checkout); per-line qty stepper + remove via `useTransition`; shipping radio cards; totals breakdown; **Place order** → `checkoutAction` → redirect to `/orders/[id]`; "or ask Paige to help" alt path
   - `/orders` — card list with status badge, total, placed date, hover affordance
   - `/orders/[id]` — 2-col (items + sidebar); shipped banner with ETA; status/address/totals cards; `notFound()` on unknown/owned
   - `/support` — FAQ grouped by category with `Collapsible`; ticket history with status + relative time; sidebar with **TicketForm** + "Prefer to chat?" CTA
@@ -211,7 +211,7 @@ Sheet → lazy `ChatPanel` (mounted only when open) → `useEveAgent` from `eve/
 Port 3001. Pure CRUD (no agent in v1). Reads/writes through `@bookstore/db`'s admin repo functions.
 
 - **Layout**: 60-unit sidebar (`Overview` / `Books` / `Orders` / `Tickets` / `FAQ`) + main content; "View storefront" external link.
-- **Pages**:
+- **Paiges**:
   - `/` — 4 Stat cards (revenue, open orders, low stock, open tickets) + Recent orders + Low stock lists
   - `/books` — table with cover/title/genre/rating/price/stock; URL search + genre chips; **Add book** Dialog (all fields, price in dollars → cents); per-row Edit Dialog, Stock Dialog (+/- stepper), Delete AlertDialog
   - `/orders` — table with status filter chips; per-row `OrderStatusSelect` for inline updates

@@ -159,7 +159,7 @@ function HeroSection({
         <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-muted-foreground">
           A small shop of carefully chosen titles — browse the shelves, or let{" "}
           <ChatInlineLink className="font-medium text-foreground underline-offset-4 hover:underline">
-            Page, our concierge
+            Paige, our concierge
           </ChatInlineLink>{" "}
           recommend something by hand.
         </p>

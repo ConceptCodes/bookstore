@@ -118,7 +118,7 @@ export function CheckoutForm({
         onClick={() => chat.openWithMessage("Help me check out my cart")}
         className="block w-full text-center text-xs text-muted-foreground underline-offset-2 hover:underline"
       >
-        or ask Page to help
+        or ask Paige to help
       </button>
     </div>
   );

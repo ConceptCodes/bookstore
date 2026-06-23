@@ -36,7 +36,7 @@ export function MessageList({
           <SparklesIcon className="size-5" />
         </span>
         <div className="space-y-1">
-          <p className="text-sm font-medium">Hi, I&apos;m Page.</p>
+          <p className="text-sm font-medium">Hi, I&apos;m Paige.</p>
           <p className="mx-auto max-w-xs text-sm text-muted-foreground">
             Your bookstore concierge. Ask me for recommendations, cart help,
             order status, or anything else.

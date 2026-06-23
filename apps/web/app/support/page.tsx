@@ -42,7 +42,7 @@ export default async function SupportPage() {
           Support
         </h1>
         <p className="text-sm text-muted-foreground">
-          Quick answers, ticket history, and Page ready to help.
+          Quick answers, ticket history, and Paige ready to help.
         </p>
       </div>
 
@@ -140,7 +140,7 @@ export default async function SupportPage() {
             <CardContent className="space-y-3 p-4">
               <p className="text-sm font-medium">Prefer to chat?</p>
               <p className="text-xs text-muted-foreground">
-                Page can answer questions, look up orders, and open a ticket for you
+                Paige can answer questions, look up orders, and open a ticket for you
                 inside the chat.
               </p>
               <ChatTriggerButton />
