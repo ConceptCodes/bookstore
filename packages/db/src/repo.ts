@@ -136,6 +136,14 @@ export function listGenres(): string[] {
     .map((r) => r.genre);
 }
 
+export function countBooks(): number {
+  const row = db
+    .select({ n: sql<number>`count(*)` })
+    .from(books)
+    .get();
+  return row?.n ?? 0;
+}
+
 export function getFeaturedBooks(limit = 6): Book[] {
   return db
     .select()
